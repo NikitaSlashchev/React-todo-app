@@ -1,0 +1,13 @@
+.todo-list-item{
+    display: flex;
+}
+
+.todo-list-item-label{
+    width: 85%;
+    margin: auto 0 auto 1.25rem;
+    position: inherit;
+    line-height: 35px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+}

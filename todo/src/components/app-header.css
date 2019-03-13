@@ -1,0 +1,13 @@
+.app-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header h1 {
+  align-self: center
+  }
+.app-header h5{
+    font-size: 1.3em;
+    color: gray;   
+    align-self: center;
+}
