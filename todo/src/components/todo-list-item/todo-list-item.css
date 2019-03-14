@@ -1,7 +1,19 @@
-.todo-list-item{
+  i{
+      width: 27px;
+      height: 27px;
+
+  }
+  
+  .todo-list-item{
     display: flex;
 }
 
+.todo-list-item button {
+    width: 53px;
+    height: 45px;
+    padding: 0;
+    margin-right: 20px;
+  }
 .todo-list-item-label{
     width: 85%;
     margin: auto 0 auto 1.25rem;
@@ -11,3 +23,15 @@
     user-select: none;
     font-size: 20px;
 }
+
+.todo-list-item.done .todo-list-item-label{
+    text-decoration: line-through;
+}
+
+.todo-list-item.important .todo-list-item-label{
+    font-weight: bold;
+    color: tomato;
+}
+
+
+  

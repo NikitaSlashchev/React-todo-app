@@ -1,27 +1,69 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './todo-list-item.css';
 
 //USE THIS AS PARAM FOR TodoListItem
 //{label, important = false}
 
-const TodoListItem = (props) => {
-    const style = {color: props.important ? 'tomato' : 'black'}; 
+export default class TodoListItem extends Component {
+
+    state = {
+        done: false,
+        important: false
+    };
+
+
+    onLabelClick = () =>{
+        this.setState(({done}) =>{
+            return{
+                done: !done
+            }
+        })
+    };
+
+    onMarkImportant = () =>{
+        this.setState(({important}) =>{
+            return{
+                important: !important
+            }
+        })
+    }
+
+    render(){
+    const {label, onDeleted} = this.props;
+    const {done, important} = this.state;
+
+    let classNames = 'todo-list-item';
+    if(done){
+        classNames += ' done';
+    }
+
+    if(important){
+        classNames += ' important';
+    }
 
     return (
-    <span className ="todo-list-item"
-        style={style}>
-        <span className="todo-list-item-label">
-            {props.label}
+    <span className ={classNames}>
+        <span 
+        className="todo-list-item-label"
+        onClick={this.onLabelClick}>
+            {label}
         </span>
-        <button className="btn  btn-outline-success btn-lg float-right border-0">
-            <i className="fa fa-check-square"></i>
-        </button>
-        <button className="btn  btn-outline-danger btn-lg float-right border-0">
+
+        <button type="button"
+            className="btn  btn-outline-danger btn-lg float-right "
+            onClick={onDeleted}>
             <i className="fa fa-times"></i>
         </button>
+
+        <button type="button"
+         className="btn  btn-outline-primary btn-lg float-right "
+                onClick={this.onMarkImportant}>
+            <i className="fa fa-exclamation"></i>
+        </button>
+        
+     
     </span> 
  
     );
+    }
 };
-
-export default TodoListItem; 
