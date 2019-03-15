@@ -12,6 +12,8 @@ import './app.css';
 
 export default class App extends Component{
 
+     
+
     state = {
          todoData : [
             {label: 'Drink Coffee', important: false, id: 1},
@@ -32,15 +34,27 @@ export default class App extends Component{
         });
     }
 
+
+    maxId = 100;
+    
     addItem = (text) =>{
-        const newTask = {label:'Add New Task', important: false};
+
+        const newItem = {
+            label: text,
+            important: false,
+            id: this.maxId++
+        };
         this.setState(({todoData}) =>{
-            const newArray = todoData.slice();
-            return {
-                todoData: newArray.push(newTask)
+
+            const newArr = [
+                ...todoData,
+                newItem
+            ];
+            return{
+                todoData:newArr
             }
         })
-    }
+    };
 
     render(){
         
@@ -55,8 +69,7 @@ export default class App extends Component{
             todos = {this.state.todoData}
             onDeleted={ this.deleteItem}/>
             <ItemAddForm
-            todos = {this.state.todoData}
-            onAdditon={ this.addItem}/>
+            onAddition={ this.addItem}/>
         </div>
     );
     }

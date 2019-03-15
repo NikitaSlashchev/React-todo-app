@@ -5,12 +5,11 @@ import './item-add-form.css';
 
 export default class ItemAddForm extends Component{
     render(){
-        const {onAddition} = this.props;
         return(
             <div className="item-add-form">
                 <button type="button"
                     className="btn btn-primary"
-                    onClick={onAddition}
+                    onClick={() => this.props.onAddition('Exaple task')}
                     >Add New Task</button>
             </div>
         )
