@@ -1,5 +1,12 @@
-.search-input{
+.search-input.form-control {
     width: auto;
     flex-grow: 0.9;
     margin-right: 5px;
+    background-color: #262d48;
+    border: none;
+    
+}
+
+input.search-input.form-control{
+    color: #8891ac;
 }

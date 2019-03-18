@@ -2,8 +2,8 @@ import React from 'react';
 import './app-header.css';
 
 const AppHeader = ({toDo, done}) => {
-    const toDoStyle = {color:'tomato'};
-    const doneStyle = {color:'#009933'}; 
+    const toDoStyle = {color:'#d8748a'};
+    const doneStyle = {color:'#8d56c8'}; 
     return(
     <div className="app-header d-flex">
     <h1>Todo List</h1>

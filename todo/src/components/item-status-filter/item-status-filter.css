@@ -1,4 +1,24 @@
 .item-status-filter{
     width: auto;
     flex-grow: 0.5;
+    border: none;
 }
+
+.btn{
+    border: none;
+    border-radius: 0px;
+    color: #8891ac;
+}
+
+.btn.btn-outline-secondary:hover{
+    transition: all 0.5s ease-out;
+    background-color:#262d48;
+    color: #8891ac;
+}
+
+button.btn.btn-info{
+    background-color:#262d48;
+    color: #8891ac;
+
+}
+
