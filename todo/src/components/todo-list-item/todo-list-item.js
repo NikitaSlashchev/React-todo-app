@@ -6,8 +6,13 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
     
+ 
+
     render(){
-    const {label, onDeleted, onToggleImportant,onToggleDone,important,done} = this.props;
+       
+        
+
+    const {label, onDeleted, onExpand, onToggleImportant,onToggleDone,important,done} = this.props;
 
     let classNames = 'todo-list-item';
     if(done){
@@ -25,7 +30,6 @@ export default class TodoListItem extends Component {
         onClick={onToggleDone}>
             {label}
         </span>
-
         <button type="button"
          className="btn  btn-outline-primary btn-lg float-right "
                 onClick={onToggleImportant}>
@@ -37,9 +41,13 @@ export default class TodoListItem extends Component {
             onClick={onDeleted}>
             <i className="fa fa-times"></i>
         </button>
-     
+
+        <button type="button"
+            className="btn  btn-outline-warning btn-lg float-right "
+            onClick={onExpand}>
+            <i className="fa fa-bars"></i>
+        </button>
     </span> 
- 
     );
     }
 };

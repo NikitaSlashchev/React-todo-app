@@ -57,6 +57,19 @@ export default class App extends Component{
             }
         })
     };
+    onExpand = (text) =>{
+                return(
+                    <div 
+                    className="additional-info"
+                    >
+                    <input type="textarea" placeholder="take a notes"></input>
+                    </div>
+                )
+            };
+        
+           
+           
+           
 
     toggleProperty(arr, id, propName){
         const idx = arr.findIndex((el) => el.id === id);
@@ -140,8 +153,8 @@ export default class App extends Component{
             onDeleted={ this.deleteItem}
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
+            onExpand={this.onExpand}
             />
-        
             <ItemAddForm
             onAddition={ this.addItem}/>
         </div>

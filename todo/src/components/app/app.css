@@ -2,9 +2,12 @@ body{
     background: rgb(33,39,66);
     background: linear-gradient(135deg, rgba(33,39,66,1) 0%, rgb(34, 40, 68) 100%);
     background-size: 100% 200%;    
+    font-family: 'Rubik', sans-serif;
 }
-
-
+.btn:focus,
+.btn:active {
+  box-shadow: none;
+}
 .todo-app{
     display: flex;
     flex-direction: column;
@@ -13,7 +16,7 @@ body{
 }
 
 .top-panel{
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0px 15px 0px;
 }
 
 

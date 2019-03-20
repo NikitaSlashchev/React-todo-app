@@ -1,31 +1,44 @@
-.item-add-form {
-margin-top: 10px;
-flex-direction: row;
-}
-
 .item-add-form input{
-    margin-right: 3px;
+    box-shadow: none !important;
+    border: none !important;
+    margin-right: 10px;
     width: 75%;
     background-color: #262d48;
     color: #8891ac;
-    border: none;
+}
+
+.item-add-form {
+    margin-top: 15px;
+    flex-direction: row;
 }
 
 button.btn.btn-light{
-    flex-grow: 1;
+    width: 35%;
     background-color: #262d48;
     color: #8891ac;
-}
-input.form-control input[type="text"]{
-    background-color: #262d48;
+    border-radius: 5px;
+    
 }
 
-.item-add-form input:focus{
-    margin-right: 3px;
+button.btn.btn-light:hover{
+    transition: 0.5s all;
+    color: white ;
+    background-color: rgb(216, 116, 138);
+};
+
+input.form-control:active{
     width: 75%;
     background-color: #262d48;
     color: #8891ac;
-    border: none;
+    border: none;    
+    
+}
+
+.item-add-form input:focus{
+    width: 75%;
+    background-color: #262d48;
+    color: #8891ac;
+    border: none;  
 }
 
 @media (max-width:550px){
@@ -35,12 +48,17 @@ input.form-control input[type="text"]{
         margin-top: 20px;
         
     }
-
     .item-add-form input{
-        width: 65%;
+        width: 75%;
     }
 
     button.btn.btn-light{
         font-size: 14px;
     }
+    input.form-control{
+        height: auto;
+        font-size: 14px;
+    }
 }
+
+

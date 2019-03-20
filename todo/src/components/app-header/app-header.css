@@ -5,12 +5,16 @@
 
 .app-header h1 {
   align-self: center;
-  color: #8891ac
+  color: #8891ac;
+  font-family: 'Poppins', sans-serif;
+  
   }
 .app-header h5{
     font-size: 1.3em;
     color: #a5aecc;   
     align-self: center;
+    font-family: 'Poppins', sans-serif;
+  
 }
 
 @media (max-width: 550px) {
