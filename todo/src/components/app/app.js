@@ -27,12 +27,21 @@ export default class App extends Component{
     createTodoItem(label){
         return{
                 label,
+                notes:'',
                 important: false,
                 done:false,
+                disabled:true,
                 id: this.maxId++
+               
         }
     }
 
+    createTodoItemDesc(notes){
+        return{
+                notes
+               
+        }
+    }
     deleteItem = (id) =>{
         this.setState(({todoData}) => {
 
@@ -57,19 +66,22 @@ export default class App extends Component{
             }
         })
     };
-    onExpand = (text) =>{
-                return(
-                    <div 
-                    className="additional-info"
-                    >
-                    <input type="textarea" placeholder="take a notes"></input>
-                    </div>
-                )
-            };
-        
-           
-           
-           
+
+    addItemDesc = (notes) =>{
+
+        const newItem = this.createTodoItemDesc(notes);
+        this.setState(({todoData}) =>{
+            const newArr = [
+                ...todoData,
+                newItem
+            ];
+            return{
+                todoData:newArr.notes
+            }
+        })
+    };
+    
+ 
 
     toggleProperty(arr, id, propName){
         const idx = arr.findIndex((el) => el.id === id);
@@ -98,6 +110,14 @@ export default class App extends Component{
         this.setState(({todoData}) => { 
             return {
                 todoData: this.toggleProperty(todoData,id,'done')
+            };
+        });
+    }; 
+
+    onToggleEnabled = (id) => {
+        this.setState(({todoData}) => { 
+            return {
+                todoData: this.toggleProperty(todoData,id,'disabled')
             };
         });
     }; 
@@ -140,6 +160,7 @@ export default class App extends Component{
         const todoCount = todoData.length - doneCount;
     return(
         <div className="todo-app">
+
             <AppHeader toDo={todoCount} done={doneCount}/>
             <div className="top-panel d-flex">
                 <SearchPanel
@@ -153,10 +174,11 @@ export default class App extends Component{
             onDeleted={ this.deleteItem}
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
-            onExpand={this.onExpand}
+            onToggleEnabled={this.onToggleEnabled} 
+            onAdditionItemDesc={this.addItemDesc}
             />
             <ItemAddForm
-            onAddition={ this.addItem}/>
+            onAddition={ this.addItem}/>  
         </div>
     );
     }

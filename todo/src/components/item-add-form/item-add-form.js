@@ -6,12 +6,12 @@ import './item-add-form.css';
 export default class ItemAddForm extends Component{
 
     state = {
-        label: ''
+        label: '',
     }
 
 onLabelChange = (e) =>{
     this.setState({
-        label:e.target.value
+        label:e.target.value,
     })
 }
 
@@ -19,7 +19,7 @@ onSubmit = (e) =>{
     e.preventDefault();
     this.props.onAddition(this.state.label)
     this.setState({
-        label: ''
+        label: '',
     })
 };
 

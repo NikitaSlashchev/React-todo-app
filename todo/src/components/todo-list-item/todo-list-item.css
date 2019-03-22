@@ -1,14 +1,10 @@
-font-family: 'Source Sans Pro', sans-serif;
-font-family: 'Rubik', sans-serif;
-  
-  i{
+i{
       width: 27px;
       height: 27px;
 
   }
   .todo-list-item{
     display: grid;
-    grid-template-columns: 6fr 1fr 1fr 1fr;
   }
 li.list-group-item{
     display: grid;
@@ -89,11 +85,6 @@ li.list-group-item{
       
     }
 
-    .todo-list-item{
-     
-      display: grid;    
-      grid-template-columns: 100fr 1fr 1fr;
-    }
   
     span.todo-list-item-label{
       display: block;
@@ -130,3 +121,27 @@ li.list-group-item{
     margin: 0 auto;
   }
 }
+
+.disabled{
+  display: none;
+}
+
+.todo-list-item.disabled {
+    display: none;
+}
+
+.form-addinfo-item > input.form-control{
+  background-color: #232942;
+  border:none;
+  height: auto;
+  width: 90%;
+  margin: 5px 0px 0px 1.25em;
+  border-radius: 5px;
+}
+
+.form-addinfo-item > input.form-control:focus{
+  background-color: #232942;
+  color: #8891ac
+}
+
+
