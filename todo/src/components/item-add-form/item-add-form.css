@@ -1,21 +1,24 @@
 .item-add-form input{
-    box-shadow: none !important;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15);
     border: none !important;
     margin-right: 10px;
     width: 75%;
-    background-color: #262d48;
+    background-color: #ffffff;
     color: #8891ac;
+    
 }
 
 .item-add-form {
     margin-top: 15px;
     flex-direction: row;
+    
+    
 }
 
 button.btn.btn-light{
     width: 35%;
-    background-color: #262d48;
-    color: #8891ac;
+    background-color: rgb(216, 116, 138);
+    color: white;
     border-radius: 5px;
     
 }
@@ -28,7 +31,7 @@ button.btn.btn-light:hover{
 
 input.form-control:active{
     width: 75%;
-    background-color: #262d48;
+    background-color: #ffffff;
     color: #8891ac;
     border: none;    
     
@@ -36,20 +39,20 @@ input.form-control:active{
 
 .item-add-form input:focus{
     width: 75%;
-    background-color: #262d48;
+    background-color: #ffffff;
     color: #8891ac;
     border: none;  
 }
 
 @media (max-width:550px){
     form.item-add-form{
-        width: 80%;
-        margin: 0 auto;
+        width: auto;
+        margin: 0 20px 0 20px;
         margin-top: 20px;
         
     }
     .item-add-form input{
-        width: 75%;
+        width: 100%;
     }
 
     button.btn.btn-light{

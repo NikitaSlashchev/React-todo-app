@@ -46,7 +46,7 @@ onSubmit = (e) =>{
 
     return (
     <span className ={classNames}>
-    <div>
+    <div className="todo-list-item-wrapper">
     <span 
         className="todo-list-item-label"
         onClick={onToggleDone}>

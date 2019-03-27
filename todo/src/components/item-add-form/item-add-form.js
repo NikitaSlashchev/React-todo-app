@@ -25,6 +25,7 @@ onSubmit = (e) =>{
 
     render(){
         return(
+            <div>
             <form className="item-add-form d-flex"
                   onSubmit={this.onSubmit}>
             <input type="text"
@@ -39,6 +40,7 @@ onSubmit = (e) =>{
                     Add New Task
                     </button>
             </form>
+            </div>
         )
        
     }

@@ -1,18 +1,20 @@
 import React,{Component} from 'react';
 
 import './app.css';
- 
+
+
 import AppHeader from '../app-header';
 import ItemStatusFilter from '../item-status-filter';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
 
-import './app.css';
+
 
 export default class App extends Component{
 
     maxId = 100;
+   
 
     state = {
          todoData: [
@@ -27,7 +29,7 @@ export default class App extends Component{
     createTodoItem(label){
         return{
                 label,
-                notes:'',
+                notes:'Sample Note',
                 important: false,
                 done:false,
                 disabled:true,
@@ -36,12 +38,6 @@ export default class App extends Component{
         }
     }
 
-    createTodoItemDesc(notes){
-        return{
-                notes
-               
-        }
-    }
     deleteItem = (id) =>{
         this.setState(({todoData}) => {
 
@@ -66,27 +62,13 @@ export default class App extends Component{
             }
         })
     };
-
-    addItemDesc = (notes) =>{
-
-        const newItem = this.createTodoItemDesc(notes);
-        this.setState(({todoData}) =>{
-            const newArr = [
-                ...todoData,
-                newItem
-            ];
-            return{
-                todoData:newArr.notes
-            }
-        })
-    };
     
  
 
     toggleProperty(arr, id, propName){
         const idx = arr.findIndex((el) => el.id === id);
 
-        const oldItem = arr[idx];
+        const oldItem = arr[idx]
         const newItem = {...oldItem, 
             [propName]:!oldItem[propName]};
 
@@ -121,7 +103,6 @@ export default class App extends Component{
             };
         });
     }; 
-
     onSearchChange = (term) =>{
         this.setState({term});
     }
@@ -160,8 +141,7 @@ export default class App extends Component{
         const todoCount = todoData.length - doneCount;
     return(
         <div className="todo-app">
-
-            <AppHeader toDo={todoCount} done={doneCount}/>
+            <AppHeader toDo={todoCount} done={doneCount} changeTheme = {this.changeTheme}/>
             <div className="top-panel d-flex">
                 <SearchPanel
                 onSearchChange={this.onSearchChange}></SearchPanel>
@@ -175,7 +155,7 @@ export default class App extends Component{
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
             onToggleEnabled={this.onToggleEnabled} 
-            onAdditionItemDesc={this.addItemDesc}
+
             />
             <ItemAddForm
             onAddition={ this.addItem}/>  

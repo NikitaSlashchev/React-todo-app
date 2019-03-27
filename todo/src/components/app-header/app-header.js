@@ -1,11 +1,12 @@
 import React from 'react';
-import './app-header.css';
+import './app-header-light.css';
 
-const AppHeader = ({toDo, done}) => {
+const AppHeader = ({toDo, done, changeTheme}) => {
     const toDoStyle = {color:'#d8748a'};
     const doneStyle = {color:'#8d56c8'}; 
     return(
     <div className="app-header d-flex">
+
     <h1>Todo List</h1>
     <h5>
         <span style = {toDoStyle}>{toDo} </span>

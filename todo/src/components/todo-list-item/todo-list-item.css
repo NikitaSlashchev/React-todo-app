@@ -5,12 +5,14 @@ i{
   }
   .todo-list-item{
     display: grid;
+   
   }
 li.list-group-item{
     display: grid;
     margin-bottom: 15px;
-    background-color: #262d48;
-    color: #8891ac;
+    background-color: #ffffff;
+    color: #1c1c1d;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
     
 }
 
@@ -30,7 +32,7 @@ li.list-group-item{
     cursor: pointer;
     user-select: none;
     font-size: 20px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Poppins', sans-serif;
    
 }
 
@@ -58,6 +60,15 @@ li.list-group-item{
     
 } 
 
+
+.btn.btn-outline-warning.btn-lg:hover{
+  transition: all 0.5s;
+  color: white;
+  background-color: #be9a2b;
+  animation: pulsate-bck 0.5s ease-in-out infinite both;
+  
+} 
+
   @keyframes pulsate-bck {
     0% {
       -webkit-transform: scale(1);
@@ -77,12 +88,19 @@ li.list-group-item{
 @media screen and (max-width:550px){
     li.list-group-item{
         
-        margin: 0 auto;
-        width: 80%;
+       
+        margin: 0 20px 0 20px;
         margin-bottom: 10px;
-        background-color: #262d48;
-        color: #8891ac;  
-      
+        background-color: #ffffff;
+        color: #1c1c1d;
+        box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15); 
+        width: auto;
+        height: auto;
+        
+    }
+
+    .list-group-item i{
+      font-size: 16px;
     }
 
   
@@ -92,7 +110,7 @@ li.list-group-item{
       margin-left: 0;
       width: auto;
       margin-right: 10px;
-      font-family: 'Rubik', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }  
 
     .btn.btn-outline-primary.btn-lg:hover{
@@ -108,6 +126,14 @@ li.list-group-item{
       animation: pulsate-bck 0.5s ease-in-out infinite both;
       
   } 
+
+  .btn.btn-outline-warning.btn-lg:hover{
+    transition: all 0.5s;
+    background-color: #8d56c8;
+    animation: pulsate-bck 0.5s ease-in-out infinite both;
+    
+} 
+
 
   .todo-list-item button{
     width: 45px;
@@ -131,17 +157,22 @@ li.list-group-item{
 }
 
 .form-addinfo-item > input.form-control{
-  background-color: #232942;
-  border:none;
+  background-color: #ffffff;
   height: auto;
   width: 90%;
   margin: 5px 0px 0px 1.25em;
   border-radius: 5px;
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.35);
 }
 
 .form-addinfo-item > input.form-control:focus{
-  background-color: #232942;
+  background-color: #ffffff;
   color: #8891ac
 }
 
+
+.todo-list-item-wrapper{
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr 1fr;
+}
 

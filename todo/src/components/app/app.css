@@ -1,9 +1,11 @@
 body{
-    background: rgb(33,39,66);
-    background: linear-gradient(135deg, rgba(33,39,66,1) 0%, rgb(34, 40, 68) 100%);
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(123,176,214,1) 100%);
     background-size: 100% 200%;    
     font-family: 'Rubik', sans-serif;
+
 }
+
 .btn:focus,
 .btn:active {
   box-shadow: none;
