@@ -1,36 +1,36 @@
 import React, {Component} from 'react';
 import './todo-list-item.css';
 
-//USE THIS AS PARAM FOR TodoListItem
-//{label, important = false}
-
-
-
-
 export default class TodoListItem extends Component { 
     state = {
-        notes: ''
+        notes: '',
+     
     }
 
-onLabelChange = (e) =>{
-    this.setState({
-        notes:e.target.value,
-    })
-}
-
-onSubmit = (e) =>{
-    e.preventDefault();
-    this.props.onAdditionItemDesc(this.state.notes)
-    this.setState({
-        notes: '',
-    })
-};
+    onLabelChange = (e) =>{
+        this.setState({
+            notes:e.target.value,
+        })
+    }
+    
+    onSubmit = (e) =>{
+        e.preventDefault();
+        this.props.onAdditionItemDesc(this.state.notes)
+        this.setState({
+            notes: '',
+        
+        })
+    };
     
     render(){
-    const {label, onDeleted, onToggleImportant,onToggleDone,onToggleEnabled,important,done,disabled} = this.props;
+    const {label, onDeleted,
+           onToggleImportant,onToggleDone,onToggleEnabled,
+           important,done,disabled,categoryItem,onCategoryChange} = this.props;
     
     let classNames = 'todo-list-item';
     let addInfoClassNames = 'form-addinfo-item';
+    let categoryClassNames = 'todo-list-item-wrapper';
+    
     if(done){
         classNames += ' done';
     }
@@ -44,9 +44,28 @@ onSubmit = (e) =>{
     }
 
 
+    if(categoryItem.regular){
+        categoryClassNames += ' regular';
+    }
+
+    if(categoryItem.job){
+        categoryClassNames += ' job';
+    }
+    
+    
+    
+    /*else if(categoryItem.job){
+        this.setState()
+        console.log({label},'job')
+    }else if(categoryItem.personal){
+        console.log({label},'personal');
+    }else  if(categoryItem.daily){
+        console.log({label},'daily');
+    }*/
+
     return (
     <span className ={classNames}>
-    <div className="todo-list-item-wrapper">
+    <div className={categoryClassNames}>
     <span 
         className="todo-list-item-label"
         onClick={onToggleDone}>
@@ -68,6 +87,12 @@ onSubmit = (e) =>{
         <button type="button"
             className="btn  btn-outline-warning btn-lg float-right "
             onClick={onToggleEnabled}>
+            <i className="fa fa-bars"></i>
+        </button>
+
+        <button type="button"
+            className="btn  btn-outline-warning btn-lg float-right "
+            onClick={onCategoryChange}>
             <i className="fa fa-bars"></i>
         </button>
     </div>

@@ -23,13 +23,20 @@ export default class App extends Component{
              this.createTodoItem('Have a lunch'),
         ],
         term: '',
-        filter: 'active'
+        filter: 'active',
+        category: '',
     };
 
-    createTodoItem(label){
+    createTodoItem(label,categoryItem){
         return{
                 label,
                 notes:'Sample Note',
+                categoryItem:{
+                    regular:true,
+                    job:false,
+                    personal:false,
+                    daily:false
+                },
                 important: false,
                 done:false,
                 disabled:true,
@@ -49,9 +56,9 @@ export default class App extends Component{
         });
     }
     
-    addItem = (text) =>{
+    addItem = (text,tag) =>{
 
-        const newItem = this.createTodoItem(text);
+        const newItem = this.createTodoItem(text,tag);
         this.setState(({todoData}) =>{
             const newArr = [
                 ...todoData,
@@ -129,8 +136,28 @@ export default class App extends Component{
         }
     }
 
+    categoryFilter(items,category){
+
+        switch(category){
+            case 'regular':
+                return items;
+            case 'job':
+                return items.categoryFilter((item) => !item.categoryItem.job);
+            case 'personal':
+                return items.categoryFilter((item) => item.categoryItem.personal);
+            case 'daily':
+                return items.categoryFilter((item) => item.categoryItem.daily);
+            default:
+                return items;
+        }
+    }
+
     onFilterChange = (filter) =>{
         this.setState({filter});
+    }
+
+    onCategoryChange = (category) =>{
+        this.setState({category});
     }
 
     render(){
@@ -155,7 +182,7 @@ export default class App extends Component{
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
             onToggleEnabled={this.onToggleEnabled} 
-
+            onCategoryChange ={this.onCategoryChange}
             />
             <ItemAddForm
             onAddition={ this.addItem}/>  
