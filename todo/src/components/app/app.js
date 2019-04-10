@@ -14,33 +14,46 @@ import ItemAddForm from '../item-add-form';
 export default class App extends Component{
 
     maxId = 100;
-   
 
-    state = {
-         todoData: [
-             this.createTodoItem('Drink Coffee'),
-             this.createTodoItem('Make awesome app'),
-             this.createTodoItem('Have a lunch'),
-        ],
-        term: '',
-        filter: 'active',
-        category: '',
+    constructor(props){
+        super(props);
+        this.state = {
+            todoData: [
+                this.createTodoItem('Drink Coffee'),
+                this.createTodoItem('Make awesome app'),
+                this.createTodoItem('Have a lunch'),
+           ],
+           term: '',
+           filter: 'active',
+           notes: ''
+        }
+
+       this.onSubmitNote = this.onSubmitNote.bind(this);
+     
+      
+    }
+
+ 
+
+    onLabelChangeNote = (e) =>{
+        this.setState({
+            notes:e.target.value,
+        })
+    }
+
+    onSubmitNote = () => {
+        this.setState({
+            notes: this.state.notes,
+        })
     };
 
-    createTodoItem(label,categoryItem){
+    createTodoItem(label){
         return{
                 label,
-                notes:'Sample Note',
-                categoryItem:{
-                    regular:true,
-                    job:false,
-                    personal:false,
-                    daily:false
-                },
                 important: false,
                 done:false,
                 disabled:true,
-                id: this.maxId++
+                id: this.maxId++,
                
         }
     }
@@ -90,7 +103,8 @@ export default class App extends Component{
     onToggleImportant = (id) => {
         this.setState(({todoData}) => { 
             return {
-                todoData: this.toggleProperty(todoData,id,'important')
+                todoData: this.toggleProperty(todoData,id,'important'),
+
             };
         })
     };
@@ -136,37 +150,21 @@ export default class App extends Component{
         }
     }
 
-    categoryFilter(items,category){
 
-        switch(category){
-            case 'regular':
-                return items;
-            case 'job':
-                return items.categoryFilter((item) => !item.categoryItem.job);
-            case 'personal':
-                return items.categoryFilter((item) => item.categoryItem.personal);
-            case 'daily':
-                return items.categoryFilter((item) => item.categoryItem.daily);
-            default:
-                return items;
-        }
-    }
 
     onFilterChange = (filter) =>{
         this.setState({filter});
     }
 
-    onCategoryChange = (category) =>{
-        this.setState({category});
-    }
-
     render(){
+        
         const {todoData, term,filter} = this.state;
         const visibleItems = this.filter(
             this.search(todoData, term),filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
     return(
+        
         <div className="todo-app">
             <AppHeader toDo={todoCount} done={doneCount} changeTheme = {this.changeTheme}/>
             <div className="top-panel d-flex">
@@ -182,7 +180,9 @@ export default class App extends Component{
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
             onToggleEnabled={this.onToggleEnabled} 
-            onCategoryChange ={this.onCategoryChange}
+            onSubmitNote={this.onSubmitNote}
+            onLabelChangeNote={this.onLabelChangeNote}
+            notes={this.state.notes}
             />
             <ItemAddForm
             onAddition={ this.addItem}/>  

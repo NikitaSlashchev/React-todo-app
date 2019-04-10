@@ -24,9 +24,12 @@ li.list-group-item{
   border-left: 5px solid gray;
 }
 
-
 .todo-list-item-wrapper.job{
   border-left: 5px solid skyblue;
+}
+
+.todo-list-item-wrapper.personal{
+  border-left: 5px solid lightgreen;
 }
 
 .todo-list-item button {

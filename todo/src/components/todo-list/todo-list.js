@@ -4,13 +4,13 @@ import './todo-list.css';
 
 
 
-
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
-                        onToggleDone, onToggleEnabled,onCategoryChange}) => {
+                        onToggleDone, onToggleEnabled,onSubmitNote,notes,onLabelChangeNote}) => {
     const elements = todos.map((item) =>{
 
-        const {id,category, ...itemProps } = item;
+        const {id,e, ...itemProps } = item;
+        
         return(
             <li key={item.id} className="list-group-item">
             
@@ -20,7 +20,9 @@ const TodoList = ({todos,onDeleted,
                  onToggleImportant={() => onToggleImportant(id)}
                  onToggleDone={() => onToggleDone(id)}
                  onToggleEnabled={() => onToggleEnabled(id)}
-                 onCategoryChange={() => onCategoryChange(category)}
+                 onSubmitNote={() => onSubmitNote()}
+                 onLabelChangeNote={(e) => onLabelChangeNote(e)}
+                 notes = {notes}
                  />
             </li>
         );
