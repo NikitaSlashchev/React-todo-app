@@ -6,10 +6,11 @@ import './todo-list.css';
 
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
-                        onToggleDone, onToggleEnabled,onSubmitNote,notes,onLabelChangeNote}) => {
+                        onToggleDone, onToggleEnabled}) => {
     const elements = todos.map((item) =>{
 
-        const {id,e, ...itemProps } = item;
+        const {id,notes, ...itemProps } = item;
+        
         
         return(
             <li key={item.id} className="list-group-item">
@@ -20,13 +21,13 @@ const TodoList = ({todos,onDeleted,
                  onToggleImportant={() => onToggleImportant(id)}
                  onToggleDone={() => onToggleDone(id)}
                  onToggleEnabled={() => onToggleEnabled(id)}
-                 onSubmitNote={() => onSubmitNote()}
-                 onLabelChangeNote={(e) => onLabelChangeNote(e)}
                  notes = {notes}
+                 
                  />
             </li>
         );
     });
+    
     return (
     <ul className="list-group todo-list">
         {elements}

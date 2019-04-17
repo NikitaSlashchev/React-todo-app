@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@y0c/react-datepicker": "^1.0.1",
+    "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
     "particles.js": "^2.0.0",
     "react": "^16.8.4",
+    "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"
   },

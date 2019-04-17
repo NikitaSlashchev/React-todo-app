@@ -2,17 +2,23 @@ import React, {Component} from 'react';
 import './todo-list-item.css';
 
 export default class TodoListItem extends Component { 
+    constructor(props) {
+        super(props);
+       
+        this.state = {
+            notes: []
+        };
+        this.onChangeNotes = this.onChangeNotes.bind(this);
+    }
 
+    onChangeNotes(event){
+       this.setState({notes:event.target.value});  
+      }
 
-
-
-  
-    
-    
     render(){
     const {label, onDeleted,
            onToggleImportant,onToggleDone,onToggleEnabled,
-           important,done,disabled,onSubmitNote} = this.props;
+           important,done,disabled} = this.props;
     
     let classNames = 'todo-list-item';
     let addInfoClassNames = 'form-addinfo-item';
@@ -29,9 +35,8 @@ export default class TodoListItem extends Component {
         addInfoClassNames += ' disabled';
     }
 
- 
 
-
+    
     return (
     <span className ={classNames}>
     <div className='todo-list-item-wrapper'>
@@ -58,16 +63,15 @@ export default class TodoListItem extends Component {
             onClick={onToggleEnabled}>
             <i className="fa fa-bars"></i>
         </button>
+        
    
-       <div>
-       </div>     
        <span 
             className = {`${addInfoClassNames}`}>
             <input 
-                onChange={this.props.onLabelChangeNote}
+                name='notes'
                 className= 'form-control'
-                value={this.props.notes}
-                onClick={onSubmitNote}
+                value={this.state.notes}
+                onChange={this.onChangeNotes}
             >
             </input>
         </span>

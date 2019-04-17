@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 
+import Modal from 'react-awesome-modal';
+
 import './app.css';
 
 
@@ -8,6 +10,7 @@ import ItemStatusFilter from '../item-status-filter';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
+import TodoModal from '../todo-modal';
 
 
 
@@ -19,45 +22,32 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Drink Coffee'),
+                this.createTodoItem('Drink Coffee','asdasd'),
                 this.createTodoItem('Make awesome app'),
                 this.createTodoItem('Have a lunch'),
            ],
            term: '',
            filter: 'active',
-           notes: ''
+           notes:' ',
+           visible : false
         }
-
-       this.onSubmitNote = this.onSubmitNote.bind(this);
-     
       
     }
 
- 
 
-    onLabelChangeNote = (e) =>{
-        this.setState({
-            notes:e.target.value,
-        })
-    }
+    createTodoItem(label,notes){
 
-    onSubmitNote = () => {
-        this.setState({
-            notes: this.state.notes,
-        })
-    };
-
-    createTodoItem(label){
         return{
                 label,
                 important: false,
                 done:false,
                 disabled:true,
                 id: this.maxId++,
+                notes
+                
                
         }
     }
-
     deleteItem = (id) =>{
         this.setState(({todoData}) => {
 
@@ -68,10 +58,9 @@ export default class App extends Component{
             }
         });
     }
-    
-    addItem = (text,tag) =>{
+    addItem = (text) =>{
 
-        const newItem = this.createTodoItem(text,tag);
+        const newItem = this.createTodoItem(text);
         this.setState(({todoData}) =>{
             const newArr = [
                 ...todoData,
@@ -82,7 +71,6 @@ export default class App extends Component{
             }
         })
     };
-    
  
 
     toggleProperty(arr, id, propName){
@@ -99,7 +87,6 @@ export default class App extends Component{
             ];
 
     }
-    
     onToggleImportant = (id) => {
         this.setState(({todoData}) => { 
             return {
@@ -108,7 +95,6 @@ export default class App extends Component{
             };
         })
     };
-
     onToggleDone = (id) => {
         this.setState(({todoData}) => { 
             return {
@@ -116,7 +102,6 @@ export default class App extends Component{
             };
         });
     }; 
-
     onToggleEnabled = (id) => {
         this.setState(({todoData}) => { 
             return {
@@ -124,6 +109,8 @@ export default class App extends Component{
             };
         });
     }; 
+
+
     onSearchChange = (term) =>{
         this.setState({term});
     }
@@ -135,6 +122,7 @@ export default class App extends Component{
             return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
         })
     }
+
 
     filter(items,filter){
 
@@ -149,43 +137,85 @@ export default class App extends Component{
                 return items;
         }
     }
-
-
-
     onFilterChange = (filter) =>{
         this.setState({filter});
     }
 
+
+    onChange = (date) => {
+        console.log(date);
+      }
+
+
+    openModal() {
+        this.setState({
+            visible : true
+        });
+    }
+    closeModal() {
+        this.setState({
+            visible : false
+        });
+    }
+
+
     render(){
         
         const {todoData, term,filter} = this.state;
-        const visibleItems = this.filter(
-            this.search(todoData, term),filter);
+        const visibleItems = this.filter(this.search(todoData, term),filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
+        const ids = 1;
     return(
         
         <div className="todo-app">
-            <AppHeader toDo={todoCount} done={doneCount} changeTheme = {this.changeTheme}/>
-            <div className="top-panel d-flex">
-                <SearchPanel
-                onSearchChange={this.onSearchChange}></SearchPanel>
-                <ItemStatusFilter 
-                filter={filter}
-                onFilterChange={this.onFilterChange}></ItemStatusFilter>
-            </div>
+        
+       
+            <AppHeader toDo={todoCount} done={doneCount} />
+                <div className="top-panel d-flex">
+                    <SearchPanel
+                    onSearchChange={this.onSearchChange}></SearchPanel>
+                    <ItemStatusFilter 
+                    filter={filter}
+                    onFilterChange={this.onFilterChange}></ItemStatusFilter>
+                </div>
+
             <TodoList 
-            todos = {visibleItems}
-            onDeleted={ this.deleteItem}
-            onToggleImportant={this.onToggleImportant}
-            onToggleDone={this.onToggleDone}
-            onToggleEnabled={this.onToggleEnabled} 
-            onSubmitNote={this.onSubmitNote}
-            onLabelChangeNote={this.onLabelChangeNote}
-            notes={this.state.notes}
+                todos = {visibleItems}
+                onDeleted={ this.deleteItem}
+                onToggleImportant={this.onToggleImportant}
+                onToggleDone={this.onToggleDone}
+                onToggleEnabled={this.onToggleEnabled}
             />
+
             <ItemAddForm
-            onAddition={ this.addItem}/>  
+                onAddition={ this.addItem}/>  
+
+            <section>
+                <input type="button" value="Open" onClick={() => this.openModal()} />
+                <Modal 
+                    visible={this.state.visible}
+                    width="550"
+                    height="487"
+                    effect="fadeInUp"
+                    onClickAway={() => this.closeModal()}
+                >
+                    <div>
+                    <TodoModal
+                        label = {<TodoList  todos = {visibleItems}
+                        ids = {ids}
+                        onDeleted={ this.deleteItem}
+                        onToggleImportant={this.onToggleImportant}
+                        onToggleDone={this.onToggleDone}
+                        onToggleEnabled={this.onToggleEnabled}/>}
+                    >
+                        </TodoModal>
+              
+               
+                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                    </div>
+                </Modal>
+            </section>
         </div>
     );
     }

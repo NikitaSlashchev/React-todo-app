@@ -1,7 +1,7 @@
 import React from 'react';
 import './app-header-light.css';
 
-const AppHeader = ({toDo, done, changeTheme}) => {
+const AppHeader = ({toDo, done}) => {
     const toDoStyle = {color:'#d8748a'};
     const doneStyle = {color:'#8d56c8'}; 
     return(
