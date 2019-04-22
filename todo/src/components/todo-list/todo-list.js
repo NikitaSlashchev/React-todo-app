@@ -6,10 +6,10 @@ import './todo-list.css';
 
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
-                        onToggleDone, onToggleEnabled}) => {
+                        onToggleDone, onToggleEnabled,openModal}) => {
     const elements = todos.map((item) =>{
 
-        const {id,notes, ...itemProps } = item;
+        const {id, notes,...itemProps } = item;
         
         
         return(
@@ -22,6 +22,7 @@ const TodoList = ({todos,onDeleted,
                  onToggleDone={() => onToggleDone(id)}
                  onToggleEnabled={() => onToggleEnabled(id)}
                  notes = {notes}
+                 openModal ={openModal}
                  
                  />
             </li>
@@ -31,6 +32,7 @@ const TodoList = ({todos,onDeleted,
     return (
     <ul className="list-group todo-list">
         {elements}
+        
     </ul>
     );
 };

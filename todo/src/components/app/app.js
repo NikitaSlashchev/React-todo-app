@@ -22,14 +22,14 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Drink Coffee','asdasd'),
+                this.createTodoItem('Drink Coffee',),
                 this.createTodoItem('Make awesome app'),
                 this.createTodoItem('Have a lunch'),
            ],
            term: '',
            filter: 'active',
-           notes:' ',
-           visible : false
+           visible : false,
+         
         }
       
     }
@@ -123,6 +123,8 @@ export default class App extends Component{
         })
     }
 
+ 
+
 
     filter(items,filter){
 
@@ -147,10 +149,14 @@ export default class App extends Component{
       }
 
 
-    openModal() {
+    openModal = (labelName,notesName) => {
         this.setState({
-            visible : true
+            visible : true,
+            name:labelName,
+            notes:notesName
         });
+
+        
     }
     closeModal() {
         this.setState({
@@ -165,7 +171,7 @@ export default class App extends Component{
         const visibleItems = this.filter(this.search(todoData, term),filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
-        const ids = 1;
+        //const ids = 1;
     return(
         
         <div className="todo-app">
@@ -186,14 +192,16 @@ export default class App extends Component{
                 onToggleImportant={this.onToggleImportant}
                 onToggleDone={this.onToggleDone}
                 onToggleEnabled={this.onToggleEnabled}
+                openModal={this.openModal}
+                
             />
 
             <ItemAddForm
                 onAddition={ this.addItem}/>  
 
-            <section>
-                <input type="button" value="Open" onClick={() => this.openModal()} />
+         
                 <Modal 
+               
                     visible={this.state.visible}
                     width="550"
                     height="487"
@@ -202,20 +210,13 @@ export default class App extends Component{
                 >
                     <div>
                     <TodoModal
-                        label = {<TodoList  todos = {visibleItems}
-                        ids = {ids}
-                        onDeleted={ this.deleteItem}
-                        onToggleImportant={this.onToggleImportant}
-                        onToggleDone={this.onToggleDone}
-                        onToggleEnabled={this.onToggleEnabled}/>}
-                    >
-                        </TodoModal>
-              
-               
+                    name ={this.state.name}
+                    notes ={this.state.notes}
+                    />
                         <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
                     </div>
+                    
                 </Modal>
-            </section>
         </div>
     );
     }

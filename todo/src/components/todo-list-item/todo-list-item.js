@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './todo-list-item.css';
 
+
 export default class TodoListItem extends Component { 
     constructor(props) {
         super(props);
        
         this.state = {
-            notes: []
+           notes:[]
         };
         this.onChangeNotes = this.onChangeNotes.bind(this);
     }
@@ -15,10 +16,11 @@ export default class TodoListItem extends Component {
        this.setState({notes:event.target.value});  
       }
 
+
     render(){
-    const {label, onDeleted,
+    const {label,notes, onDeleted,
            onToggleImportant,onToggleDone,onToggleEnabled,
-           important,done,disabled} = this.props;
+           important,done,disabled,openModal} = this.props;
     
     let classNames = 'todo-list-item';
     let addInfoClassNames = 'form-addinfo-item';
@@ -58,17 +60,21 @@ export default class TodoListItem extends Component {
             <i className="fa fa-times"></i>
         </button>
 
-        <button type="button"
+        {/* <button type="button"
             className="btn  btn-outline-warning btn-lg float-right "
             onClick={onToggleEnabled}>
             <i className="fa fa-bars"></i>
-        </button>
+        </button>  */}
         
+        <button type="button"
+            className="btn  btn-outline-warning btn-lg float-right "
+            onClick={() =>{openModal(label,notes)}}>
+          <i className="fa fa-expand"></i>
+        </button>
    
        <span 
             className = {`${addInfoClassNames}`}>
             <input 
-                name='notes'
                 className= 'form-control'
                 value={this.state.notes}
                 onChange={this.onChangeNotes}
