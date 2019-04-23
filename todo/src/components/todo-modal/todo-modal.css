@@ -1,10 +1,15 @@
+a{
+    position: absolute;
+    top: 0;
+}
+
 .todo-modal{
     display: grid;
     grid-template-rows: 1fr 1fr 2fr ;
 }
 
 .todo-modal-header{
-    margin: 20px auto 20px auto;
+    margin: 20px 10px 20px 55px;
 }
 
 .todo-modal-notes{
@@ -25,11 +30,18 @@
 }
 
 .todo-modal-timepicker{
-    height: 50px;
-    margin: auto;
+    height: 100px;
+    margin: 10px 20px 20px auto;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
     
 }
 
 .picker__container__tab,.picker__container__include-time{
     background-color: #fff;
+}
+
+.react-datepicker__input-container{
+    margin-right: 36px;
 }

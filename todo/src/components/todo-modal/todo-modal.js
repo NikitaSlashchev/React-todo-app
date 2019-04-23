@@ -5,8 +5,7 @@ import './todo-modal.css';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-
-
+import moment from "moment"
 
 export default class TodoModal extends Component { 
     constructor(props){
@@ -24,29 +23,32 @@ export default class TodoModal extends Component {
         });
       }
 
-      
+      handleOnBlur(event) {
+        var timer = moment.duration(5, "seconds").timer({loop: true}, function() {
+            console.log('hello')
+          });
+        }
+
 
     render(){
         
-        
         return(
-            <div className="todo-modal">    
-                <h1 className="todo-modal-header">
-                    {this.props.name}
-                </h1>
-
-                <div 
-                className="todo-modal-timepicker"
-                >
-                 <div>
-                 <DatePicker
-                    selected={this.state.startDate}
-                    timeInputLabel="Time:"
-                    onChange={this.handleChange}
-                    dateFormat="MM/dd/yyyy h:mm aa"
-                    showTimeInput
-                />
-            </div>
+            <div className="todo-modal">   
+                <div  className="todo-modal-timepicker">
+                    <h2 className="todo-modal-header">
+                        {this.props.name}
+                    </h2>
+                    <div>
+                        <DatePicker
+                            selected={this.state.startDate}
+                            timeInputLabel="Time:"
+                            onChange={this.handleChange}
+                            dateFormat="MM/dd/yyyy h:mm aa"
+                            showTimeInput
+                            onBlur={this.handleOnBlur}
+                        />
+                    </div>
+                    <button onClick={this.handleOnBlur}>shish</button>
                    
                 </div>
                 <div className="todo-modal-notes">

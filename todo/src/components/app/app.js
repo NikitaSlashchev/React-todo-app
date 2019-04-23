@@ -13,6 +13,7 @@ import ItemAddForm from '../item-add-form';
 import TodoModal from '../todo-modal';
 
 
+import 'moment/locale/ru';
 
 export default class App extends Component{
 
@@ -144,11 +145,6 @@ export default class App extends Component{
     }
 
 
-    onChange = (date) => {
-        console.log(date);
-      }
-
-
     openModal = (labelName,notesName) => {
         this.setState({
             visible : true,
@@ -171,7 +167,6 @@ export default class App extends Component{
         const visibleItems = this.filter(this.search(todoData, term),filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
-        //const ids = 1;
     return(
         
         <div className="todo-app">
