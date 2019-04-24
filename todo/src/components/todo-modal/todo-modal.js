@@ -3,9 +3,11 @@ import React, {Component} from 'react';
 import './todo-modal.css';
 
 import DatePicker from "react-datepicker";
+import moment from "moment";
+
 
 import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment"
+import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 export default class TodoModal extends Component { 
     constructor(props){
@@ -15,21 +17,30 @@ export default class TodoModal extends Component {
          startDate: new Date()
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleOnBlur = this.handleOnBlur.bind(this);
+        this.toggleCalendar = this.toggleCalendar.bind(this);
     }
     
     handleChange(date) {
         this.setState({
           startDate: date
         });
+     
+       
       }
 
-      handleOnBlur(event) {
-        var timer = moment.duration(5, "seconds").timer({loop: true}, function() {
-            console.log('hello')
-          });
-        }
+      handleOnBlur(){
+        let shish = moment(this.state.startDate,"h:mm:ss").fromNow();
+        alert("Напоминание придет: " + shish);
+        this.toggleCalendar()
+        }  
 
-
+        toggleCalendar (e) {
+            e && e.preventDefault()
+            this.setState({isOpen: !this.state.isOpen})
+            
+          }
+      
     render(){
         
         return(
@@ -38,31 +49,40 @@ export default class TodoModal extends Component {
                     <h2 className="todo-modal-header">
                         {this.props.name}
                     </h2>
-                    <div>
-                        <DatePicker
+                    <div>     
+    {
+        this.state.isOpen && (
+            <DatePicker
+                        width="200"
+                        height="200"
                             selected={this.state.startDate}
                             timeInputLabel="Time:"
                             onChange={this.handleChange}
                             dateFormat="MM/dd/yyyy h:mm aa"
                             showTimeInput
-                            onBlur={this.handleOnBlur}
+                            inline
+                            onClickOutside={this.handleOnBlur}
                         />
+        )
+    }
+                        <button type="button"
+                        className="btn  btn-outline-danger btn-lg"
+                        onClick={this.toggleCalendar}>
+                        <i className="fa fa-bell"></i>
+                    </button>
                     </div>
-                    <button onClick={this.handleOnBlur}>shish</button>
-                   
+                    
                 </div>
                 <div className="todo-modal-notes">
                 <textarea
                         value={this.props.notes}
+                        placeholder="Добавить заметку"
                 />
                 </div>
-            
+
             </div>
         )
     }
+    
 
 }
-
-
-
-

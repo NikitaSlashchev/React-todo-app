@@ -31,11 +31,16 @@ a{
 
 .todo-modal-timepicker{
     height: 100px;
-    margin: 10px 20px 20px auto;
+    margin: 10px 20px 20px 1px;
     display: grid;
     grid-template-columns: 4fr 1fr;
     align-items: center;
     
+}
+.react-datepicker{
+    top: 100px;
+    right: -50px;
+    position: absolute !important;
 }
 
 .picker__container__tab,.picker__container__include-time{
@@ -45,3 +50,5 @@ a{
 .react-datepicker__input-container{
     margin-right: 36px;
 }
+
+
