@@ -49,14 +49,24 @@ input.form-control:active{
         width: auto;
         margin: 0 20px 0 20px;
         margin-top: 20px;
+        display: grid !important;
+        grid-template-rows: 1fr 1fr;
         
     }
+
+    input.form-control{
+        width: 100% !important;
+    }
+
     .item-add-form input{
         width: 100%;
     }
 
     button.btn.btn-light{
         font-size: 14px;
+        margin-top: 15px;
+        width: 100%;
+        
     }
     input.form-control{
         height: auto;

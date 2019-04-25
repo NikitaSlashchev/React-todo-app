@@ -47,7 +47,8 @@ export default class TodoListItem extends Component {
         onClick={onToggleDone}>
             {label}
         </span>
-       
+       <div
+            className="todo-list-item-button">
         <button type="button"
          className="btn  btn-outline-primary btn-lg float-right "
                 onClick={onToggleImportant}>
@@ -71,7 +72,7 @@ export default class TodoListItem extends Component {
             onClick={() =>{openModal(label,notes)}}>
           <i className="fa fa-expand"></i>
         </button>
-   
+        </div>
        <span 
             className = {`${addInfoClassNames}`}>
             <input 

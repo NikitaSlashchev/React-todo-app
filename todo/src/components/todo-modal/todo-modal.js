@@ -5,6 +5,10 @@ import './todo-modal.css';
 import DatePicker from "react-datepicker";
 import moment from "moment";
 
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
+
+
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
@@ -14,7 +18,7 @@ export default class TodoModal extends Component {
         super(props);
         this.state = {
          notes:'',
-         startDate: new Date()
+         startDate: new Date(),
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -25,20 +29,18 @@ export default class TodoModal extends Component {
         this.setState({
           startDate: date
         });
-     
-       
       }
 
       handleOnBlur(){
         let shish = moment(this.state.startDate,"h:mm:ss").fromNow();
-        alert("Напоминание придет: " + shish);
         this.toggleCalendar()
+        toast.notify("Напоминание придет: " + shish)
         }  
+        
 
         toggleCalendar (e) {
             e && e.preventDefault()
             this.setState({isOpen: !this.state.isOpen})
-            
           }
       
     render(){
@@ -53,16 +55,16 @@ export default class TodoModal extends Component {
     {
         this.state.isOpen && (
             <DatePicker
-                        width="200"
-                        height="200"
-                            selected={this.state.startDate}
-                            timeInputLabel="Time:"
-                            onChange={this.handleChange}
-                            dateFormat="MM/dd/yyyy h:mm aa"
-                            showTimeInput
-                            inline
-                            onClickOutside={this.handleOnBlur}
-                        />
+                width="200"
+                height="200"
+                selected={this.state.startDate}
+                timeInputLabel="Time:"
+                onChange={this.handleChange}
+                dateFormat="MM/dd/yyyy h:mm aa"
+                showTimeInput
+                inline
+                onClickOutside={this.handleOnBlur}
+            />
         )
     }
                         <button type="button"
@@ -79,7 +81,7 @@ export default class TodoModal extends Component {
                         placeholder="Добавить заметку"
                 />
                 </div>
-
+               {/* <div><button onClick={this.props.closeModal()}>sasat</button></div> */}
             </div>
         )
     }
