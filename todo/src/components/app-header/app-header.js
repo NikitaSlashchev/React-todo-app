@@ -10,9 +10,9 @@ const AppHeader = ({toDo, done}) => {
     <h1>Todo List</h1>
     <h5>
         <span style = {toDoStyle}>{toDo} </span>
-         more to do, 
+         надо сделать, 
          <span style = {doneStyle}> {done} </span>
-         done
+         сделано
     </h5> 
     </div>);
 };

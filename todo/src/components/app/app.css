@@ -6,6 +6,24 @@ body{
 
 }
 
+.todo-modal-close{
+    position: fixed;
+    top: 385px;
+    left: 77px;
+    width: 300px;
+    height: 50px;
+    background-color: rgb(216, 116, 138);
+    border-radius: 5px;
+}
+
+.todo-modal-close a{
+    color: white;
+    text-decoration: none;
+    padding: 14px 105px 16px 118px;
+
+   
+}
+
 .btn:focus,
 .btn:active {
   box-shadow: none;

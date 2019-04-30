@@ -1,7 +1,4 @@
-a{
-    position: absolute;
-    top: 0;
-}
+
 
 .todo-modal{
     display: grid;
@@ -9,7 +6,8 @@ a{
 }
 
 .todo-modal-header{
-    margin: 20px 10px 20px 55px;
+    margin: 20px 10px 20px 40px;
+    font-size: 3rem;
 }
 
 .todo-modal-notes{
@@ -27,6 +25,7 @@ a{
     padding-bottom: 100px;
     overflow: hidden;
     resize: none;
+    border: none;
 }
 
 .todo-modal-timepicker{
@@ -39,7 +38,7 @@ a{
 }
 .react-datepicker{
     top: 100px;
-    right: -50px;
+    right: 30px;
     position: absolute !important;
 }
 
@@ -48,7 +47,24 @@ a{
 }
 
 .react-datepicker__input-container{
-    margin-right: 36px;
+    margin-right: 56px;
 }
 
+.todo-modal-notes textarea:focus{
+    outline: none;
+}
 
+@media (max-width:550px){
+
+
+    .todo-modal-header{
+        margin: 20px 10px 20px 30px;
+    }
+    .todo-modal-close{
+        left: 10px;
+    }
+
+    .todo-modal-notes textarea{
+        margin-top: 20px;
+    }
+}

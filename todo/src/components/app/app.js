@@ -23,9 +23,9 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Drink Coffee',),
-                this.createTodoItem('Make awesome app'),
-                this.createTodoItem('Have a lunch'),
+                this.createTodoItem('Выпить кофе',),
+                this.createTodoItem('Сделать классное приложение'),
+                this.createTodoItem('Перекусить'),
            ],
            term: '',
            filter: 'active',
@@ -198,7 +198,7 @@ export default class App extends Component{
                 <Modal 
                
                     visible={this.state.visible}
-                    width="550"
+                    width="450"
                     height="487"
                     effect="fadeInUp"
                     onClickAway={() => this.closeModal()}
@@ -208,7 +208,10 @@ export default class App extends Component{
                     name ={this.state.name}
                     notes ={this.state.notes}
                     />
-                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                    <button 
+                    className="todo-modal-close">
+                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Закрыть</a>
+                    </button>
                     </div>
                     
                 </Modal>

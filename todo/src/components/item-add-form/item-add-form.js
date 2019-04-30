@@ -31,13 +31,13 @@ onSubmit = (e) =>{
             <input type="text"
                     className="form-control"
                     onChange={this.onLabelChange}
-                    placeholder="What needs to be done"
+                    placeholder="Что нужно сделать?"
                     value={this.state.label}>
             </input>
                 <button type="button"
                     className="btn btn-light"
                     onClick={this.onSubmit}>
-                    Add New Task
+                    Добавить
                     </button>
             </form>
             </div>
