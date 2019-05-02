@@ -16,6 +16,20 @@ li.list-group-item{
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
     
 }
+
+.todo-list-item.work{
+border-left: 8px solid skyblue;
+}
+
+.todo-list-item.personal{
+  border-left: 8px solid rgb(224, 105, 129);
+}
+
+.todo-list-item.family{
+  border-left: 8px solid rgb(92, 153, 92);
+}
+
+
 .todo-list-item-wrapper{
   display: flex;
 }

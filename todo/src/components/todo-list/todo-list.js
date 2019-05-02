@@ -6,7 +6,7 @@ import './todo-list.css';
 
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
-                        onToggleDone, onToggleEnabled,openModal}) => {
+                        onToggleDone, onToggleEnabled,onToggleFamily,onTogglePersonal,onToggleWork,openModal}) => {
     const elements = todos.map((item) =>{
 
         const {id, notes,...itemProps } = item;
@@ -21,7 +21,9 @@ const TodoList = ({todos,onDeleted,
                  onToggleImportant={() => onToggleImportant(id)}
                  onToggleDone={() => onToggleDone(id)}
                  onToggleEnabled={() => onToggleEnabled(id)}
-                 notes = {notes}
+                 onToggleWork={() => onToggleWork(id)}
+                 onTogglePersonal={() => onTogglePersonal(id)}
+                 onToggleFamily={() => onToggleFamily(id)}
                  openModal ={openModal}
                  
                  />

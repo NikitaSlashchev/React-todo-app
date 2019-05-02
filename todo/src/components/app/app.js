@@ -23,9 +23,9 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Выпить кофе',),
-                this.createTodoItem('Сделать классное приложение'),
-                this.createTodoItem('Перекусить'),
+                this.createTodoItem('Выпить кофе',false,false,true),
+                this.createTodoItem('Сделать классное приложение',true),
+                this.createTodoItem('Перекусить',false,true,false),
            ],
            term: '',
            filter: 'active',
@@ -36,15 +36,17 @@ export default class App extends Component{
     }
 
 
-    createTodoItem(label,notes){
+    createTodoItem(label,work,personal,family){
 
         return{
                 label,
                 important: false,
                 done:false,
+                work,
+                personal,
+                family,
                 disabled:true,
                 id: this.maxId++,
-                notes
                 
                
         }
@@ -107,6 +109,30 @@ export default class App extends Component{
         this.setState(({todoData}) => { 
             return {
                 todoData: this.toggleProperty(todoData,id,'disabled')
+            };
+        });
+    }; 
+
+    onToggleWork = (id) => {
+        this.setState(({todoData}) => { 
+            return {
+                todoData: this.toggleProperty(todoData,id,'work')
+            };
+        });
+    }; 
+
+    onTogglePersonal = (id) => {
+        this.setState(({todoData}) => { 
+            return {
+                todoData: this.toggleProperty(todoData,id,'personal')
+            };
+        });
+    }; 
+
+    onToggleFamily = (id) => {
+        this.setState(({todoData}) => { 
+            return {
+                todoData: this.toggleProperty(todoData,id,'family')
             };
         });
     }; 
@@ -187,6 +213,9 @@ export default class App extends Component{
                 onToggleImportant={this.onToggleImportant}
                 onToggleDone={this.onToggleDone}
                 onToggleEnabled={this.onToggleEnabled}
+                onToggleWork={this.onToggleWork}
+                onTogglePersonal={this.onTogglePersonal}
+                onToggleFamily={this.onToggleFamily}
                 openModal={this.openModal}
                 
             />
@@ -196,7 +225,6 @@ export default class App extends Component{
 
          
                 <Modal 
-               
                     visible={this.state.visible}
                     width="450"
                     height="487"

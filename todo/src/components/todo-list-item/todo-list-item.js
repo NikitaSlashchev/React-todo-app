@@ -20,7 +20,7 @@ export default class TodoListItem extends Component {
     render(){
     const {label,notes, onDeleted,
            onToggleImportant,onToggleDone,//onToggleEnabled,
-           important,done,disabled,openModal} = this.props;
+           important,done,disabled,work,personal,family,openModal} = this.props;
     
     let classNames = 'todo-list-item';
     let addInfoClassNames = 'form-addinfo-item';
@@ -36,6 +36,15 @@ export default class TodoListItem extends Component {
     if(disabled){
         addInfoClassNames += ' disabled';
     }
+    if(work){
+        classNames += ' work';
+    }
+    if(personal){
+        classNames += ' personal';
+    }
+    if(family){
+        classNames += ' family';
+    }
 
 
     
@@ -45,6 +54,7 @@ export default class TodoListItem extends Component {
     <span 
         className="todo-list-item-label"
         onClick={onToggleDone}>
+        
             {label}
         </span>
        <div
@@ -52,7 +62,7 @@ export default class TodoListItem extends Component {
         <button type="button"
          className="btn  btn-outline-primary btn-lg float-right "
                 onClick={onToggleImportant}>
-            <i className="fa fa-exclamation"></i>
+            <i className="fa fa-star"></i>
         </button>
 
         <button type="button"
