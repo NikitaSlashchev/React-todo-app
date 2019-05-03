@@ -7,9 +7,11 @@ export default class TodoListItem extends Component {
         super(props);
        
         this.state = {
-           notes:[]
+           notes:[],
+           flag: ''
         };
         this.onChangeNotes = this.onChangeNotes.bind(this);
+        this.flagChange = this.flagChange.bind(this);
     }
 
     onChangeNotes(event){
@@ -17,10 +19,22 @@ export default class TodoListItem extends Component {
       }
 
 
+      flagChange(event){
+
+        this.setState({flag: event.target.value});
+
+      }
+
+      flagSubmit(event) {
+        alert('Your favorite flavor is: ' + this.state.flag);
+        event.preventDefault();
+      }
+
+
     render(){
     const {label,notes, onDeleted,
-           onToggleImportant,onToggleDone,//onToggleEnabled,
-           important,done,disabled,work,personal,family,openModal} = this.props;
+           onToggleImportant,onToggleDone,
+           important,done,disabled,openModal} = this.props;
     
     let classNames = 'todo-list-item';
     let addInfoClassNames = 'form-addinfo-item';
@@ -36,27 +50,31 @@ export default class TodoListItem extends Component {
     if(disabled){
         addInfoClassNames += ' disabled';
     }
-    if(work){
+    if(this.state.flag === "work"){
         classNames += ' work';
     }
-    if(personal){
+    if(this.state.flag === "personal"){
         classNames += ' personal';
     }
-    if(family){
+    if(this.state.flag === "family"){
         classNames += ' family';
     }
 
-
-    
     return (
     <span className ={classNames}>
     <div className='todo-list-item-wrapper'>
     <span 
         className="todo-list-item-label"
         onClick={onToggleDone}>
-        
             {label}
         </span>
+        <div>
+            <select value={this.state.flag} onChange={this.flagChange}>
+                <option label="Work" value="work"/>
+                <option label="Personal" value="personal"/>
+                <option label="Family" value="family"/>
+            </select>
+        </div>
        <div
             className="todo-list-item-button">
         <button type="button"
