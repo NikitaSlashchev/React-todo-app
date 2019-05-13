@@ -19,6 +19,7 @@ export default class TodoModal extends Component {
         this.state = {
          notes:'',
          startDate: new Date(),
+         
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleOnBlur = this.handleOnBlur.bind(this);
@@ -42,6 +43,8 @@ export default class TodoModal extends Component {
             e && e.preventDefault()
             this.setState({isOpen: !this.state.isOpen})
           }
+
+   
       
     render(){
         
@@ -81,7 +84,8 @@ export default class TodoModal extends Component {
                         placeholder="Добавить заметку"
                 />
                 </div>
-               {/* <div><button onClick={this.props.closeModal()}>sasat</button></div> */}
+             
+   
             </div>
         )
     }

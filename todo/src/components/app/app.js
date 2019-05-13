@@ -13,11 +13,14 @@ import ItemAddForm from '../item-add-form';
 import TodoModal from '../todo-modal';
 
 
+
 import 'moment/locale/ru';
+//import Board from 'react-trello';
 
 export default class App extends Component{
 
     maxId = 100;
+    
 
     constructor(props){
         super(props);
@@ -171,15 +174,18 @@ export default class App extends Component{
     }
 
 
-    openModal = (labelName,notesName) => {
+    openModal = (labelName,notesName,flagName) => {
         this.setState({
             visible : true,
             name:labelName,
-            notes:notesName
+            notes:notesName,
+            flag:flagName
         });
 
         
     }
+
+
     closeModal() {
         this.setState({
             visible : false
@@ -188,6 +194,26 @@ export default class App extends Component{
 
 
     render(){
+
+        // const data = {
+        //     lanes: [
+        //       {
+        //         id: 'lane1',
+        //         title: 'Planned Tasks',
+        //         label: '2/2',
+        //         cards: [
+        //           {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
+        //           {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
+        //         ]
+        //       },
+        //       {
+        //         id: 'lane2',
+        //         title: 'Completed',
+        //         label: '0/0',
+        //         cards: []
+        //       }
+        //     ]
+        //   }
         
         const {todoData, term,filter} = this.state;
         const visibleItems = this.filter(this.search(todoData, term),filter);
@@ -206,7 +232,10 @@ export default class App extends Component{
                     filter={filter}
                     onFilterChange={this.onFilterChange}></ItemStatusFilter>
                 </div>
-
+                
+                <ItemAddForm
+                onAddition={ this.addItem}/>  
+    
             <TodoList 
                 todos = {visibleItems}
                 onDeleted={ this.deleteItem}
@@ -217,12 +246,9 @@ export default class App extends Component{
                 onTogglePersonal={this.onTogglePersonal}
                 onToggleFamily={this.onToggleFamily}
                 openModal={this.openModal}
+                changeFlag={this.changeFlag}
                 
             />
-
-            <ItemAddForm
-                onAddition={ this.addItem}/>  
-
          
                 <Modal 
                     visible={this.state.visible}
@@ -235,7 +261,9 @@ export default class App extends Component{
                     <TodoModal
                     name ={this.state.name}
                     notes ={this.state.notes}
+                    flag={this.state.flag}
                     />
+                   
                     <button 
                     className="todo-modal-close">
                         <a href="javascript:void(0);" onClick={() => this.closeModal()}>Закрыть</a>
@@ -243,7 +271,10 @@ export default class App extends Component{
                     </div>
                     
                 </Modal>
+              
+
         </div>
+            
     );
     }
 }

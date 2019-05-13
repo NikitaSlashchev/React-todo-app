@@ -26,6 +26,7 @@
     overflow: hidden;
     resize: none;
     border: none;
+    font-size: 24px;
 }
 
 .todo-modal-timepicker{

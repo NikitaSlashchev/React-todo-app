@@ -1,11 +1,16 @@
 body{
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(123,176,214,1) 100%);
-    background-size: 100% 200%;    
+    background-size: 1vh 100vh;    
     font-family: 'Rubik', sans-serif;
 
 }
 
+
+.react-contextmenu{
+    top: 70px !important;
+    left: 200px !important;
+}
 .todo-modal-close{
     position: fixed;
     top: 385px;
