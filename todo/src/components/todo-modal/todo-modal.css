@@ -3,15 +3,21 @@
 .todo-modal{
     display: grid;
     grid-template-rows: 1fr 1fr 2fr ;
+    height: -webkit-fill-available;
+    display: contents;
+    -webkit-animation:todo-modal-header 0.6s ease-out both;
+    animation: todo-modal-header 0.6s ease-out both;
 }
 
-.todo-modal-header{
+h2.todo-modal-header{
     margin: 20px 10px 20px 40px;
     font-size: 3rem;
+    
 }
 
 .todo-modal-notes{
     display: flex;
+    
 } 
 
 .todo-modal-notes textarea{
@@ -30,7 +36,7 @@
 }
 
 .todo-modal-timepicker{
-    height: 100px;
+    height: auto;
     margin: 10px 20px 20px 1px;
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -42,6 +48,8 @@
     right: 30px;
     position: absolute !important;
 }
+
+
 
 .picker__container__tab,.picker__container__include-time{
     background-color: #fff;
@@ -69,3 +77,28 @@
         margin-top: 20px;
     }
 }
+
+@-webkit-keyframes todo-modal-header {
+    0% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes todo-modal-header {
+    0% {
+      -webkit-transform: translateX(-50px);
+              transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }

@@ -2,7 +2,7 @@ import React from 'react';
 import TodoListItem from '../todo-list-item/';
 import './todo-list.css';
 
-import {SortablePane,Pane} from 'react-sortable-pane';
+import {SortablePane} from 'react-sortable-pane';
 
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,

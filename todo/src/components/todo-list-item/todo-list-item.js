@@ -47,6 +47,9 @@ export default class TodoListItem extends Component {
     if(disabled){
         addInfoClassNames += ' disabled';
     }
+    if(this.state.flag === "-"){
+        classNames += ' ';
+    }
     if(this.state.flag === "work"){
         classNames += ' work';
     }
@@ -109,9 +112,9 @@ export default class TodoListItem extends Component {
         </span>
        </div>
        <ContextMenu id={label}>
-  <MenuItem >
+  <MenuItem>
     <select  size="3" value={this.state.flag} onChange={this.flagChange}>
-        <option label="Work" value="work"/>
+        <option label="Work" value="work" / >
         <option label="Personal" value="personal"/>
         <option label="Family" value="family"/>
     </select>

@@ -83,9 +83,13 @@ export default class TodoModal extends Component {
                         value={this.props.notes}
                         placeholder="Добавить заметку"
                 />
-                </div>
-             
+                 
    
+                </div>
+                <button 
+                    className="todo-modal-close">
+                        <a href="javascript:void(0);" onClick={() => {this.props.closeModal()}}>Закрыть</a>
+                    </button>
             </div>
         )
     }

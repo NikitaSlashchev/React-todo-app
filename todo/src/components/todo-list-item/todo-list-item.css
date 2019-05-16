@@ -32,13 +32,12 @@ border-left: 8px solid skyblue;
 }
 
 .todo-list-item.personal{
-  border-left: 8px solid rgb(224, 105, 129);
+  border-left: 8px solid rgba(224, 105, 129, 0.897);
 }
 
 .todo-list-item.family{
-  border-left: 8px solid rgb(92, 153, 92);
+  border-left: 8px solid rgba(110, 212, 94, 0.808)
 }
-
 
 .todo-list-item-wrapper{
   display: flex;
@@ -215,7 +214,19 @@ border-left: 8px solid skyblue;
   background-color: #ffffff;
   color: #8891ac
 }
+@media(max-width:550px){
+  li.list-group-item{
+   width: -webkit-fill-available;
 
+  }
+}
+
+@media(max-width:360px){
+  li.list-group-item{
+   width: -webkit-fill-available;
+
+  }
+}
 
 
 

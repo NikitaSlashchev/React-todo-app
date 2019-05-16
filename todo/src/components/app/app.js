@@ -4,13 +4,13 @@ import Modal from 'react-awesome-modal';
 
 import './app.css';
 
-
 import AppHeader from '../app-header';
 import ItemStatusFilter from '../item-status-filter';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
 import TodoModal from '../todo-modal';
+import TodoFooter from '../todo-footer'
 
 
 
@@ -186,7 +186,7 @@ export default class App extends Component{
     }
 
 
-    closeModal() {
+    closeModal(visible) {
         this.setState({
             visible : false
         });
@@ -253,7 +253,7 @@ export default class App extends Component{
                 <Modal 
                     visible={this.state.visible}
                     width="450"
-                    height="487"
+                 
                     effect="fadeInUp"
                     onClickAway={() => this.closeModal()}
                 >
@@ -261,18 +261,19 @@ export default class App extends Component{
                     <TodoModal
                     name ={this.state.name}
                     notes ={this.state.notes}
+                    closeModal={() => this.closeModal(this.visible)}
                     flag={this.state.flag}
                     />
                    
-                    <button 
+                    {/* <button 
                     className="todo-modal-close">
                         <a href="javascript:void(0);" onClick={() => this.closeModal()}>Закрыть</a>
-                    </button>
+                    </button> */}
                     </div>
                     
                 </Modal>
               
-
+        <TodoFooter></TodoFooter>
         </div>
             
     );

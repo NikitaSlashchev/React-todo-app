@@ -57,6 +57,7 @@ input.form-control:active{
 
     input.form-control{
         width: 100% !important;
+       
     }
 
     .item-add-form input{
@@ -76,3 +77,12 @@ input.form-control:active{
 }
 
 
+@media (max-width:360px){
+    input.form-control{
+        height: fit-content;
+    }
+    button.btn.btn-light {
+        margin-top: -5px;
+    }
+  
+}

@@ -64,4 +64,9 @@ button.btn.btn-info:focus{
     color: white;
 }
 
+@media (max-width: 360px){
+button.btn{
+    font-size: 14px;
+}
 
+}
