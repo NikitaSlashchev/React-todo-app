@@ -29,6 +29,7 @@ onSubmit = (e) =>{
             <form className="item-add-form d-flex"
                   onSubmit={this.onSubmit}>
             <input type="text"
+            tabIndex="1"
                     className="form-control"
                     onChange={this.onLabelChange}
                     placeholder="Что нужно сделать?"

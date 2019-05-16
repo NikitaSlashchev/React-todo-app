@@ -6,6 +6,7 @@ i{
   }
   .todo-list-item{
     display: grid;
+    
    
   }
 li.list-group-item{
@@ -15,8 +16,12 @@ li.list-group-item{
     color: #1c1c1d;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
     width: 100%;
+    padding-left: 0;
+   
     
 }
+
+
 .todo-list-item select{
   position: absolute;
     top: -70px;
@@ -196,6 +201,7 @@ border-left: 8px solid skyblue;
 .disabled{
   display: none;
 }
+
 
 .todo-list-item.disabled {
     display: none;

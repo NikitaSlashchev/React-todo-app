@@ -26,9 +26,9 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Выпить кофе',false,false,true),
-                this.createTodoItem('Сделать классное приложение',true),
-                this.createTodoItem('Перекусить',false,true,false),
+                this.createTodoItem('Выпить кофе'),
+                this.createTodoItem('Сделать классное приложение'),
+                this.createTodoItem('Перекусить'),
            ],
            term: '',
            filter: 'active',
@@ -45,9 +45,6 @@ export default class App extends Component{
                 label,
                 important: false,
                 done:false,
-                work,
-                personal,
-                family,
                 disabled:true,
                 id: this.maxId++,
                 

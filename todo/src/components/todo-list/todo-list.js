@@ -3,7 +3,9 @@ import TodoListItem from '../todo-list-item/';
 import './todo-list.css';
 
 import {SortablePane} from 'react-sortable-pane';
-
+const brdStyle={
+    'border-radius':'10px'
+};
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
                         onToggleDone,updateData,
@@ -11,12 +13,12 @@ const TodoList = ({todos,onDeleted,
                         onTogglePersonal,onToggleWork,
                         openModal}) => {
     const elements = todos.map((item) =>{
-
+        
         const {id, notes,value,...itemProps } = item;
         
         
         return(
-            <li key={item.id} className="list-group-item">
+            <li key={item.id} style={brdStyle} className="list-group-item">
  
                 <TodoListItem
                  {...itemProps}
