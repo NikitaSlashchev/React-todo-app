@@ -11,11 +11,12 @@ import TodoList from '../todo-list';
 import ItemAddForm from '../item-add-form';
 import TodoModal from '../todo-modal';
 import TodoFooter from '../todo-footer'
+import TodoWelcome from '../todo-welcome'
 
 
 
 import 'moment/locale/ru';
-//import Board from 'react-trello';
+
 
 export default class App extends Component{
 
@@ -33,10 +34,70 @@ export default class App extends Component{
            term: '',
            filter: 'active',
            visible : false,
+           startVisible:true
          
         }
       
     }
+
+    componentDidMount() {
+        const _onInit = auth2 => {
+          console.log('init OK', auth2)
+        }
+        const _onError = err => {
+          console.log('error', err)
+        }
+        window.gapi.load('auth2', function() {
+          window.gapi.auth2
+            .init({ // не забудьте указать ваш ключ в .env
+              client_id:
+                process.env.REACT_APP_GOOGLE_CLIENT_ID,
+            })
+            .then(_onInit, _onError)
+        })
+      }
+      signIn = () => {
+        const auth2 = window.gapi.auth2.getAuthInstance()
+        auth2.signIn().then(googleUser => {
+        
+          // метод возвращает объект пользователя
+          // где есть все необходимые нам поля
+          const profile = googleUser.getBasicProfile()
+          console.log('ID: ' + profile.getId()) // не посылайте подобную информацию напрямую, на ваш сервер!
+          console.log('Full Name: ' + profile.getName())
+          console.log('Given Name: ' + profile.getGivenName())
+          console.log('Family Name: ' + profile.getFamilyName())
+          console.log('Image URL: ' + profile.getImageUrl())
+          console.log('Email: ' + profile.getEmail())
+    
+          // токен
+          const id_token = googleUser.getAuthResponse().id_token
+          console.log('ID Token: ' + id_token)
+          alert('Hello ' + profile.getName());
+        })
+      }
+      signOut = () => {
+        const auth2 = window.gapi.auth2.getAuthInstance()
+        auth2.signOut().then(function() {
+          console.log('User signed out.')
+        })
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     createTodoItem(label,work,personal,family){
@@ -189,6 +250,18 @@ export default class App extends Component{
         });
     }
 
+    startCloseModal(startVisible) {
+        this.setState({
+            startVisible : false
+        });
+    }
+
+    startOpenModal = () =>{
+        this.setState({
+            visible:true
+        })
+    }
+
 
     render(){
 
@@ -220,16 +293,19 @@ export default class App extends Component{
         
         <div className="todo-app">
         
-       
+       <TodoWelcome
+       startVisible={this.state.visible}
+       startCloseModal={this.startCloseModal}></TodoWelcome>
             <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
                     <SearchPanel
-                    onSearchChange={this.onSearchChange}></SearchPanel>
+                    onSearchChange={this.onSearchChange} ></SearchPanel>
                     <ItemStatusFilter 
                     filter={filter}
                     onFilterChange={this.onFilterChange}></ItemStatusFilter>
                 </div>
-                
+                <button onClick={this.signIn}>Log in</button>
+          <button onClick={this.signOut}>Log out</button>
                 <ItemAddForm
                 onAddition={ this.addItem}/>  
     
@@ -269,7 +345,7 @@ export default class App extends Component{
                     </div>
                     
                 </Modal>
-              
+               
         <TodoFooter></TodoFooter>
         </div>
             

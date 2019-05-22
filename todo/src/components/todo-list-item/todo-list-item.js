@@ -54,6 +54,7 @@ export default class TodoListItem extends Component {
     }
 
     return (
+        
     <span className ={classNames}>
 
     <div className='todo-list-item-wrapper'>

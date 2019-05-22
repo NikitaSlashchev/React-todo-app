@@ -2,8 +2,68 @@ body{
    background: url(../app/img/trianglify.png);
    font-family: 'Rubik', sans-serif;
     min-height: 1000px;
+   
 }
 
+
+.welcomeModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    background: url('../app/img/helloPage.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+    
+}
+
+.black-overlay:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.welcomeModal h1{
+    font-size: 5em;
+    color: white;
+    position: relative;
+    padding-left: 10%;
+    padding-bottom: 15px;
+}
+
+.welcomeModal h1>span{
+    color: aquamarine;
+}
+
+.welcomeModal p{
+    position: relative;
+    color: white;
+    font-size: 21px;
+    padding-left: 11%;
+    max-width: 70%;
+    padding-bottom: 25px;
+}
+
+
+
+@keyframes slide-out-right {
+    0% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+  }
+  
 
 .react-contextmenu{
     top: 70px !important;
