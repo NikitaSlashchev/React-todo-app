@@ -12,7 +12,7 @@ body{
     justify-content: center;
     width: -webkit-fill-available;
     height: -webkit-fill-available;
-    background: url('../app/img/helloPage.jpg');
+    background: url(../app/img/trianglify.png);
     background-size: cover;
     background-blend-mode: darken;
     
@@ -37,7 +37,7 @@ body{
 }
 
 .welcomeModal h1>span{
-    color: aquamarine;
+    color: #2f7caf;
 }
 
 .welcomeModal p{

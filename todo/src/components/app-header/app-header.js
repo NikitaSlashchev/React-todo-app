@@ -3,7 +3,7 @@ import './app-header-light.css';
 
 const AppHeader = ({toDo, done}) => {
     const toDoStyle = {color:'#d8748a'};
-    const doneStyle = {color:'#8d56c8'}; 
+    const doneStyle = {color:'aquamarine'}; 
     return(
     <div className="app-header d-flex">
 

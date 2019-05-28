@@ -1,15 +1,72 @@
-.start-button{
+.black-overlay:before{
+  z-index: -99;
+}
+
+.welcome-title{
   color: white;
-  background-color: rgba(0, 0, 0, 0);
-  border: 3px solid aquamarine;
-  position: relative;
-  width: 292px;
-  margin-left: 11%;
-  margin-top: 10px;
+  font-size: 36px;
+  margin-bottom: 70px;
+}
+
+.welcome-title > i{
+  color: crimson;
+}
+.slide-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
   
 }
 
-.start-button:hover{
+.welcome-button{
+  color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid white;
+    position: relative;
+    width: 292px;
+    margin-left: 11%;
+    margin-top: 10px;
+
+}
+
+button.signInBtn{
+  position: relative;
+    width: 292px;
+    margin-left: 11%;
+}
+
+
+.btn.welcome-button.tutorial{
+  margin-left: 0;
+  margin-top: 70px;
+}
+
+.welcome-button:hover{
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15); 
   background-color: aliceblue;
 }
+
+
+button.welcome-button-begin{
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 3px solid aquamarine;
+  position: absolute;
+  width: 292px;
+  margin-left: 11%;
+  margin-top: 10px;
+  z-index: 100;
+}
+
+.skip-tutorial{
+  margin-bottom: 30px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-left: 11%;
+  margin-top: 20px;
+}
+
+

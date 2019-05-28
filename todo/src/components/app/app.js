@@ -14,10 +14,9 @@ import TodoFooter from '../todo-footer'
 import TodoWelcome from '../todo-welcome'
 
 
-
 import 'moment/locale/ru';
 
-
+let reactSwipeEl;
 export default class App extends Component{
 
     maxId = 100;
@@ -34,7 +33,8 @@ export default class App extends Component{
            term: '',
            filter: 'active',
            visible : false,
-           startVisible:true
+           startVisible:true,
+           changeCounter:0
          
         }
       
@@ -63,42 +63,30 @@ export default class App extends Component{
           // метод возвращает объект пользователя
           // где есть все необходимые нам поля
           const profile = googleUser.getBasicProfile()
-          console.log('ID: ' + profile.getId()) // не посылайте подобную информацию напрямую, на ваш сервер!
-          console.log('Full Name: ' + profile.getName())
-          console.log('Given Name: ' + profile.getGivenName())
-          console.log('Family Name: ' + profile.getFamilyName())
-          console.log('Image URL: ' + profile.getImageUrl())
-          console.log('Email: ' + profile.getEmail())
-    
+        //   console.log('ID: ' + profile.getId()) // не посылайте подобную информацию напрямую, на ваш сервер!
+        //   console.log('Full Name: ' + profile.getName())
+        //   console.log('Given Name: ' + profile.getGivenName())
+        //   console.log('Family Name: ' + profile.getFamilyName())
+        //   console.log('Image URL: ' + profile.getImageUrl())
+        //   console.log('Email: ' + profile.getEmail())
+            
           // токен
           const id_token = googleUser.getAuthResponse().id_token
-          console.log('ID Token: ' + id_token)
-          alert('Hello ' + profile.getName());
+          this.setState({
+            changeCounter:1
+          })
+          console.log(this.state.changeCounter);
+        //   console.log('ID Token: ' + id_token)
+        //   alert('Hello ' + profile.getName());
+
         })
       }
       signOut = () => {
         const auth2 = window.gapi.auth2.getAuthInstance()
         auth2.signOut().then(function() {
-          console.log('User signed out.')
+          console.log('User signed out.');
         })
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     createTodoItem(label,work,personal,family){
 
@@ -262,28 +250,14 @@ export default class App extends Component{
         })
     }
 
+     keyPress (e) {
+        if(e.key === "Escape") {
+            this.closeModal();
+        }
+    }
+
 
     render(){
-
-        // const data = {
-        //     lanes: [
-        //       {
-        //         id: 'lane1',
-        //         title: 'Planned Tasks',
-        //         label: '2/2',
-        //         cards: [
-        //           {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
-        //           {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
-        //         ]
-        //       },
-        //       {
-        //         id: 'lane2',
-        //         title: 'Completed',
-        //         label: '0/0',
-        //         cards: []
-        //       }
-        //     ]
-        //   }
         
         const {todoData, term,filter} = this.state;
         const visibleItems = this.filter(this.search(todoData, term),filter);
@@ -292,10 +266,14 @@ export default class App extends Component{
     return(
         
         <div className="todo-app">
-        
        <TodoWelcome
        startVisible={this.state.visible}
-       startCloseModal={this.startCloseModal}></TodoWelcome>
+       startCloseModal={this.closeModal}
+       signIn={this.signIn}
+       changeCounter={this.state.changeCounter}
+       signOut={this.signOut}>
+          
+       </TodoWelcome>
             <AppHeader toDo={todoCount} done={doneCount} />
                 <div className="top-panel d-flex">
                     <SearchPanel
@@ -304,8 +282,8 @@ export default class App extends Component{
                     filter={filter}
                     onFilterChange={this.onFilterChange}></ItemStatusFilter>
                 </div>
-                <button onClick={this.signIn}>Log in</button>
-          <button onClick={this.signOut}>Log out</button>
+                {/* <button onClick={this.signIn}>Log in</button>
+          <button onClick={this.signOut}>Log out</button> */}
                 <ItemAddForm
                 onAddition={ this.addItem}/>  
     
@@ -326,9 +304,10 @@ export default class App extends Component{
                 <Modal 
                     visible={this.state.visible}
                     width="450"
-                 
+                    height="50%"
                     effect="fadeInUp"
                     onClickAway={() => this.closeModal()}
+                    
                 >
                     <div>
                     <TodoModal
@@ -338,10 +317,6 @@ export default class App extends Component{
                     flag={this.state.flag}
                     />
                    
-                    {/* <button 
-                    className="todo-modal-close">
-                        <a href="javascript:void(0);" onClick={() => this.closeModal()}>Закрыть</a>
-                    </button> */}
                     </div>
                     
                 </Modal>

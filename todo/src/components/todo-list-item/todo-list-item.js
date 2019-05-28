@@ -85,15 +85,7 @@ export default class TodoListItem extends Component {
             onClick={() =>{openModal(label,notes,this.state.flag)}}>
           <i className="fa fa-expand"></i>
         </button>
-{/* 
-        <div>
-            <select value={this.state.flag} onChange={this.flagChange}>
-                <option label="Work" value="work"/>
-                <option label="Personal" value="personal"/>
-                <option label="Family" value="family"/>
-            </select>
-           
-        </div> */}
+
         </div>
        <span 
             className = {`${addInfoClassNames}`}>
