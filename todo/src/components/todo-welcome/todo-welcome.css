@@ -2,15 +2,12 @@
   z-index: -99;
 }
 
-.welcome-title{
+.welcomeModal h1{
   color: white;
-  font-size: 36px;
-  margin-bottom: 70px;
+  font-size: 5em;
+  margin-bottom: 30px;
 }
 
-.welcome-title > i{
-  color: crimson;
-}
 .slide-wrapper{
   display: flex;
   flex-direction: column;
@@ -19,6 +16,12 @@
   text-align: center;
   
 }
+
+h2.welcome-title{
+  color: white;
+  margin-bottom: 50px;
+}
+
 
 .welcome-button{
   color: white;
@@ -41,6 +44,7 @@ button.signInBtn{
 .btn.welcome-button.tutorial{
   margin-left: 0;
   margin-top: 70px;
+  width: 100%
 }
 
 .welcome-button:hover{
@@ -67,6 +71,113 @@ button.welcome-button-begin{
   justify-content: flex-start;
   margin-left: 11%;
   margin-top: 20px;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .welcomeModal h1{
+    font-size: 4em;
+    padding-right: 20px;
+    padding-top: 20%;
+  }
+  .welcomeModal p{
+    font-size: 24px;
+    max-width: 100%;
+  }
+
+  .welcome-title{
+    color: white;
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .welcomeModal h1{
+    font-size: 3.5em;
+    padding: 10% 20px 20px 8%;
+  }
+  .welcomeModal p{
+    font-size: 21px;
+    max-width: 100%;
+  }
+  .welcome-title{
+    color: white;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  .gif-tutorial{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 50px;
+  }
+  .btn.welcome-button.tutorial{
+    margin: 0 auto;
+    width: 80%;
+    margin-top: -40px;
+    margin-bottom: -24px;
+  }
+  p.login-text{
+    max-width: 95%;
+    padding-left: 50px;
+  }
+  p.end-text{
+    max-width: 95%;
+  }
+}
+
+/* Iphone 5 */
+@media (max-width: 320px) {
+  .welcomeModal h1{
+    font-size: 2.5em;
+    padding-right: 20px;
+    padding-left: 28px;
+  }
+  .welcome-title{
+    color: white;
+    font-size: 23px;
+    margin-bottom: -24px;
+  }
+  .welcomeModal p{
+    font-size: 18px;
+    max-width: 100%;
+  }
+  .btn.welcome-button{
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .btn.welcome-button.tutorial{
+    margin: 0 auto;
+    margin-top: -40px;
+  }
+  .btn.welcome-button{
+    height: 40px;
+  }
+
+  h1.end-tutorial{
+    padding-left: 28px;
+  }
+
+  p.login-text{
+    padding-left: 28px;
+  }
 }
 
 

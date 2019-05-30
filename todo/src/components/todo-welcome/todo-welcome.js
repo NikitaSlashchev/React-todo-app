@@ -58,7 +58,7 @@ finishButtonClick = () =>{
                     <div className='welcomeModal black-overlay'>
                     <div className="slide-wrapper">
                         <h2 className="welcome-title">Отмечайте важные задачи</h2> 
-                        <iframe src="https://giphy.com/embed/f4PmGQgStrQ562wiTE" width="480" height="383" frameBorder="0" class="gif-tutorial" allowFullScreen></iframe>
+                        <iframe src="https://giphy.com/embed/f4PmGQgStrQ562wiTE" width="480" height="383" frameBorder="0" className="gif-tutorial" allowFullScreen></iframe>
                         <button type='button' className='btn welcome-button tutorial' onClick={() => reactSwipeEl.next()}>Понятно</button>
                           </div>
                     </div>
@@ -66,25 +66,25 @@ finishButtonClick = () =>{
                     <div className='welcomeModal black-overlay'>
                     <div className="slide-wrapper">
                         <h2 className="welcome-title">Удаляйте задачи</h2> 
-                        <iframe src="https://giphy.com/embed/cLwLdoiK8IMTOX1g9e" width="480" height="383" frameBorder="0" class="gif-tutorial" allowFullScreen></iframe>
+                        <iframe src="https://giphy.com/embed/cLwLdoiK8IMTOX1g9e" width="480" height="383" frameBorder="0" className="gif-tutorial" allowFullScreen></iframe>
                         <button type='button' className='btn welcome-button tutorial' onClick={() => reactSwipeEl.next()}>Понятно</button>
                           </div>
                     </div>
                     <div className='welcomeModal black-overlay'>
                     <div className="slide-wrapper">
                     <h2 className="welcome-title">Добавляйте заметки и напоминания</h2>
-                    <iframe src="https://giphy.com/embed/S5ho8l6tqyWVT06yB6" width="454" height="480" frameBorder="0" class="gif-tutorial" allowFullScreen></iframe>
+                    <iframe src="https://giphy.com/embed/S5ho8l6tqyWVT06yB6" width="454" height="480" frameBorder="0" className="gif-tutorial" allowFullScreen></iframe>
                     <button type='button' className='btn welcome-button tutorial' onClick={() => reactSwipeEl.next()}>Понятно</button>
                           </div>
                     </div>
                     <div className='welcomeModal black-overlay'>
                         <h1>Еще одна вещь</h1>
-                        <p>Войдите с вашей учетной записью Google чтобы сихронизировать ваши задачи между устройствами. Поверьте, это удобно :)</p>
+                        <p className="login-text">Войдите с вашей учетной записью Google чтобы сихронизировать ваши задачи между устройствами. Поверьте, это удобно :)</p>
                         <button className="btn welcome-button" onClick={this.finishButtonClick} beforeunload={() => reactSwipeEl.next()}><i class="fa fa-google" aria-hidden="true"></i>Log in</button>
                     </div>
                     <div className='welcomeModal black-overlay'>
-                        <h1>Спасибо за ваше терпение</h1>
-                        <p>Теперь вы сможете начать работу в Todo-list</p>
+                        <h1 className="end-tutorial">Спасибо за ваше терпение</h1>
+                        <p className="end-text">Теперь вы сможете начать работу в Todo-list</p>
                         <button 
                                 className="btn welcome-button" 
                                 onClick={this.changeVisible}
