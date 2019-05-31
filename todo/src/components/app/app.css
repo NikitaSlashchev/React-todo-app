@@ -1,6 +1,7 @@
 body{
-   background: url(../app/img/trianglify.png);
+   background: url(../app/img/trianglify.webp);
    font-family: 'Rubik', sans-serif;
+   font-display: auto;
     min-height: 1000px;
    
 }
@@ -12,7 +13,7 @@ body{
     justify-content: center;
     width: -webkit-fill-available;
     height: -webkit-fill-available;
-    background: url(../app/img/trianglify.png);
+    background: url(../app/img/trianglify.webp);
     background-size: cover;
     background-blend-mode: darken;
     

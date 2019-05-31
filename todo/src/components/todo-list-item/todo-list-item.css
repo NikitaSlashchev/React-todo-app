@@ -46,6 +46,7 @@ border-left: 8px solid skyblue;
 
 .todo-list-item-wrapper{
   display: flex;
+  height: auto;
 }
 .todo-list-item-button{
   display: flex;

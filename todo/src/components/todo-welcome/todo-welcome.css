@@ -2,6 +2,10 @@
   z-index: -99;
 }
 
+.gif-tutorial{
+  font-display: auto;
+}
+
 .welcomeModal h1{
   color: white;
   font-size: 5em;
@@ -71,6 +75,10 @@ button.welcome-button-begin{
   justify-content: flex-start;
   margin-left: 11%;
   margin-top: 20px;
+  width: fit-content;
+  background: none;
+  border: none;
+color: aquamarine
 }
 
 /* Large desktops and laptops */
@@ -144,6 +152,7 @@ button.welcome-button-begin{
 
 /* Iphone 5 */
 @media (max-width: 320px) {
+  
   .welcomeModal h1{
     font-size: 2.5em;
     padding-right: 20px;

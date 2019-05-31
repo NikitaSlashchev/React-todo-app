@@ -2,9 +2,10 @@ import React from 'react';
 import TodoListItem from '../todo-list-item/';
 import './todo-list.css';
 
-import {SortablePane} from 'react-sortable-pane';
+import {SortablePane, Pane} from 'react-sortable-pane';
+
 const brdStyle={
-    'border-radius':'10px'
+    'borderRadius':'10px'
 };
 const TodoList = ({todos,onDeleted,
                         onToggleImportant,
@@ -16,10 +17,10 @@ const TodoList = ({todos,onDeleted,
         
         const {id, notes,value,...itemProps } = item;
         
-        
         return(
+            <Pane key={item.id}defaultSize={{ width: '100%'}} resizable={{ x: false, y: false, xy: false }}>
             <li key={item.id} style={brdStyle} className="list-group-item">
- 
+                
                 <TodoListItem
                  {...itemProps}
                  onDeleted={() => onDeleted(id)}
@@ -34,6 +35,7 @@ const TodoList = ({todos,onDeleted,
                  
                  />
             </li>
+            </Pane>
         );
     });
     

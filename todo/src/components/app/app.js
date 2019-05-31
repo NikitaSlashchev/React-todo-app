@@ -16,7 +16,7 @@ import TodoWelcome from '../todo-welcome'
 
 import 'moment/locale/ru';
 
-let reactSwipeEl;
+// let reactSwipeEl;
 export default class App extends Component{
 
     maxId = 100;
@@ -62,7 +62,7 @@ export default class App extends Component{
         
           // метод возвращает объект пользователя
           // где есть все необходимые нам поля
-          const profile = googleUser.getBasicProfile()
+          //const profile = googleUser.getBasicProfile()
         //   console.log('ID: ' + profile.getId()) // не посылайте подобную информацию напрямую, на ваш сервер!
         //   console.log('Full Name: ' + profile.getName())
         //   console.log('Given Name: ' + profile.getGivenName())
@@ -71,7 +71,7 @@ export default class App extends Component{
         //   console.log('Email: ' + profile.getEmail())
             
           // токен
-          const id_token = googleUser.getAuthResponse().id_token
+          //const id_token = googleUser.getAuthResponse().id_token
           this.setState({
             changeCounter:1
           })

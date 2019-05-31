@@ -9,9 +9,9 @@ export default class TodoFooter extends Component {
            <div className="todo-footer-block">
            <h1>Copyright Никита Слащёв</h1>
            <div>
-           <a href="mailto:nikitaslashchev@gmail.com"><i className="fa fa-envelope-o" aria-hidden="true"></i></a>
-           <a href="https://github.com/NikitaSlashchev/React-todo-app"><i className="fa fa-github" aria-hidden="true"></i></a>
-           <a href="https://t.me/NikitaSlashchev"><i className="fa fa-telegram" aria-hidden="true"></i></a>
+           <a href="mailto:nikitaslashchev@gmail.com" ><i className="fa fa-envelope-o" aria-hidden="false"></i></a>
+           <a href="https://github.com/NikitaSlashchev/React-todo-app"><i className="fa fa-github" aria-hidden="false"></i></a>
+           <a href="https://t.me/NikitaSlashchev"><i className="fa fa-telegram" aria-hidden="false"></i></a>
            </div>
         
            </div>
