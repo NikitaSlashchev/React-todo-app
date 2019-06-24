@@ -101,9 +101,9 @@ export default class TodoListItem extends Component {
   <MenuItem>
     <select  size="3" value={this.state.flag} onChange={this.flagChange}>
         <option className="disabled"/>
-        <option label="Work" value="work" / >
-        <option label="Personal" value="personal"/>
-        <option label="Family" value="family"/>
+        <option label="Работа" value="work" / >
+        <option label="Личные" value="personal"/>
+        <option label="Семья" value="family"/>
         
     </select>
   </MenuItem>

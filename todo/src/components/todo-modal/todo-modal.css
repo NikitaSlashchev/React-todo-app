@@ -7,6 +7,7 @@
     display: contents !important;
     -webkit-animation:todo-modal-header 0.6s ease-out both;
     animation: todo-modal-header 0.6s ease-out both;
+
 }
 
 h2.todo-modal-header{
@@ -19,6 +20,12 @@ h2.todo-modal-header{
     display: flex;
     
 } 
+
+.todo-modal-close{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
 
 
 
@@ -67,6 +74,10 @@ h2.todo-modal-header{
 
 @media (max-width:550px){
 
+    .todo-modal{
+        width: min-content !important;
+        height: 420px !important;
+    }
 
     .todo-modal-header{
         margin: 20px 10px 20px 30px;

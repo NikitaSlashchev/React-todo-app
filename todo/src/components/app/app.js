@@ -26,9 +26,9 @@ export default class App extends Component{
         super(props);
         this.state = {
             todoData: [
-                this.createTodoItem('Выпить кофе'),
-                this.createTodoItem('Сделать классное приложение'),
-                this.createTodoItem('Перекусить'),
+                // this.createTodoItem('Выпить кофе'),
+                // this.createTodoItem('Сделать классное приложение'),
+                // this.createTodoItem('Перекусить'),
            ],
            term: '',
            filter: 'active',
@@ -85,10 +85,10 @@ export default class App extends Component{
         const auth2 = window.gapi.auth2.getAuthInstance()
         auth2.signOut().then(function() {
           console.log('User signed out.');
-        })
-      }
+        });
+      };
 
-    createTodoItem(label,work,personal,family){
+    createTodoItem(label){
 
         return{
                 label,
@@ -304,7 +304,7 @@ export default class App extends Component{
                 <Modal 
                     visible={this.state.visible}
                     width="450"
-                    height="50%"
+                    height="450"
                     effect="fadeInUp"
                     onClickAway={() => this.closeModal()}
                     
